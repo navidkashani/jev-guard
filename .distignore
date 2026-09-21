@@ -1,0 +1,26 @@
+# Excluded from the distributable zip (wp dist-archive / WP.org deploy)
+/.git
+/.github
+/.gitignore
+/.gitattributes
+/.distignore
+/.editorconfig
+/.wp-env.json
+/.wp-env.override.json
+/node_modules
+/vendor
+/bin
+/tests
+/composer.json
+/composer.lock
+/package.json
+/package-lock.json
+/phpcs.xml.dist
+/phpunit.xml.dist
+/.phpunit.result.cache
+/.phpunit.cache
+/README.md
+/CHANGELOG.md
+/CONTRIBUTING.md
+/SECURITY.md
+/.DS_Store

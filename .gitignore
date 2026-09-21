@@ -1,0 +1,14 @@
+/vendor/
+/node_modules/
+/.phpunit.result.cache
+/.phpunit.cache/
+/.wp-env.override.json
+/build/
+/*.zip
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+.env
+.env.*

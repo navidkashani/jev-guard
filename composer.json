@@ -1,0 +1,49 @@
+{
+  "name": "jev-guard/jev-guard",
+  "description": "WordPress spam protection for comments and Contact Form 7 powered by Jev (TypeSafe AI).",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://github.com/navidkashani/jev-guard",
+  "keywords": [
+    "wordpress",
+    "wordpress-plugin",
+    "spam",
+    "anti-spam",
+    "comments",
+    "contact-form-7"
+  ],
+  "authors": [
+    {
+      "name": "Navid Kashani",
+      "homepage": "https://github.com/navidkashani"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/navidkashani/jev-guard/issues",
+    "source": "https://github.com/navidkashani/jev-guard"
+  },
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.4.1",
+    "phpcompatibility/phpcompatibility-wp": "^2.1.8",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.2.1",
+    "phpunit/phpunit": "^9.6",
+    "yoast/phpunit-polyfills": "^4.0"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.33"
+    },
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf",
+    "test": "phpunit"
+  }
+}

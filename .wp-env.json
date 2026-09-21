@@ -1,0 +1,22 @@
+{
+  "core": null,
+  "phpVersion": "8.5",
+  "plugins": [
+    ".",
+    "https://downloads.wordpress.org/plugin/contact-form-7.6.1.7.zip",
+    "https://downloads.wordpress.org/plugin/flamingo.2.6.4.zip"
+  ],
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "SCRIPT_DEBUG": true
+  },
+  "env": {
+    "tests": {
+      "config": {
+        "WP_DEBUG": true
+      }
+    }
+  }
+}

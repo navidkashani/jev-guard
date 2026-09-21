@@ -1,0 +1,884 @@
+# Copyright (C) 2026 Navid Kashani
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Jev Guard 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/navidkashani/jev-guard/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-21T18:16:15+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: jev-guard\n"
+
+#. Plugin Name of the plugin
+#: jev-guard.php
+#: includes/Admin/CommentsScreen.php:274
+#: includes/Admin/SettingsPage.php:168
+#: includes/Admin/SettingsPage.php:169
+#: includes/Admin/SettingsPage.php:550
+#: includes/Privacy.php:51
+msgid "Jev Guard"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: jev-guard.php
+msgid "https://github.com/navidkashani/jev-guard"
+msgstr ""
+
+#. Description of the plugin
+#: jev-guard.php
+msgid "Spam protection for comments, reviews and Contact Form 7 powered by Jev, TypeSafe AI's decision model."
+msgstr ""
+
+#. Author of the plugin
+#: jev-guard.php
+msgid "Navid Kashani"
+msgstr ""
+
+#. Author URI of the plugin
+#: jev-guard.php
+msgid "https://github.com/navidkashani"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:92
+#: includes/Admin/CommentsScreen.php:97
+#: includes/Admin/SettingsPage.php:134
+msgid "Jev"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:130
+msgid "Skipped"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:135
+msgid "Awaiting retry"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:135
+msgid "Error"
+msgstr ""
+
+#. translators: 1: reason, 2: model id, 3: date
+#: includes/Admin/CommentsScreen.php:144
+#, php-format
+msgid "Reason: %1$s. Model %2$s, %3$s"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:151
+msgid "Not checked"
+msgstr ""
+
+#. translators: %d: spam probability as a percentage
+#: includes/Admin/CommentsScreen.php:177
+#, php-format
+msgid "Spam %d%%"
+msgstr ""
+
+#. translators: %d: spam probability as a percentage
+#: includes/Admin/CommentsScreen.php:181
+#, php-format
+msgid "Held %d%%"
+msgstr ""
+
+#. translators: %d: spam probability as a percentage
+#: includes/Admin/CommentsScreen.php:184
+#: includes/Verdict.php:332
+#, php-format
+msgid "%d%% spam"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:214
+msgid "flagged by another plugin"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:215
+msgid "disallowed keys"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:216
+msgid "empty"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:217
+msgid "moderator"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:218
+msgid "previously approved author"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:219
+msgid "pingback"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:243
+msgid "Re-check this comment with Jev"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:244
+#: includes/Admin/CommentsScreen.php:331
+msgid "Re-check with Jev"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:263
+msgid "Check for Spam"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:292
+msgid "Decision"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:293
+msgid "Spam probability"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:294
+msgid "Responds to page"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:295
+msgid "Abuse score (0–2)"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:296
+msgid "Category"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:297
+msgid "Links"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:298
+#: includes/Admin/SettingsPage.php:193
+msgid "Model"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:299
+#: includes/Admin/SettingsPage.php:610
+msgid "Checked"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:300
+msgid "Latency"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:300
+msgid "cached"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:307
+msgid "Raw answers"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:312
+msgid "History"
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:345
+#: includes/Admin/CommentsScreen.php:380
+#: includes/Admin/Notices.php:94
+#: includes/Admin/SettingsPage.php:655
+#: includes/Admin/SettingsPage.php:670
+msgid "Not allowed."
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:349
+#: includes/Admin/CommentsScreen.php:384
+#: includes/Admin/SettingsPage.php:723
+#: includes/Admin/SettingsPage.php:738
+msgid "Comments integration unavailable."
+msgstr ""
+
+#: includes/Admin/CommentsScreen.php:394
+msgid "Another Check for Spam run is in progress."
+msgstr ""
+
+#: includes/Admin/Notices.php:40
+#: includes/Admin/Notices.php:83
+msgid "Settings"
+msgstr ""
+
+#: includes/Admin/Notices.php:60
+msgid "Jev Guard needs an API key before it can check comments."
+msgstr ""
+
+#: includes/Admin/Notices.php:62
+msgid "Open the settings"
+msgstr ""
+
+#: includes/Admin/Notices.php:73
+msgid "On Vercel a valid payment method must be on file (nothing is charged unless you buy credits) — add one under Team Settings → Billing, then create the key again under AI Gateway → API Keys."
+msgstr ""
+
+#: includes/Admin/Notices.php:75
+msgid "Check the key and the account balance in the provider console."
+msgstr ""
+
+#: includes/Admin/Notices.php:79
+msgid "Jev Guard cannot reach the spam service:"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:95
+msgid "Testing…"
+msgstr ""
+
+#. translators: 1: model id, 2: latency in ms, 3: spam probability as a percentage, 4: category
+#: includes/Admin/SettingsPage.php:97
+#, php-format
+msgid "Connected. Model %1$s answered in %2$d ms and rated the sample %3$d%% spam (%4$s)."
+msgstr ""
+
+#. translators: %s: error message
+#: includes/Admin/SettingsPage.php:99
+#, php-format
+msgid "Failed: %s"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:100
+msgid "Re-checking…"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:101
+msgid "Moved to Spam"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:102
+msgid "Checking pending comments…"
+msgstr ""
+
+#. translators: 1: number checked, 2: total, 3: number moved to spam
+#: includes/Admin/SettingsPage.php:104
+#, php-format
+msgid "%1$d of %2$d checked, %3$d moved to Spam"
+msgstr ""
+
+#. translators: 1: number checked, 2: number moved to spam
+#: includes/Admin/SettingsPage.php:106
+#, php-format
+msgid "Done: %1$d checked, %2$d moved to Spam. Reload to see the changes."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:107
+msgid "No pending comments to check."
+msgstr ""
+
+#. translators: %d: seconds
+#: includes/Admin/SettingsPage.php:109
+#, php-format
+msgid "Provider rate limit — pausing for %d s…"
+msgstr ""
+
+#. translators: %s: error message
+#: includes/Admin/SettingsPage.php:111
+#, php-format
+msgid "Error: %s"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:112
+msgid "Collecting sample…"
+msgstr ""
+
+#. translators: 1: number classified, 2: total
+#: includes/Admin/SettingsPage.php:114
+#, php-format
+msgid "%1$d of %2$d comments classified"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:115
+msgid "Not enough comments: the calibration needs at least a few comments in both the Spam and Approved lists."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:116
+msgid "Accuracy"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:117
+msgid "False positives (approved comments that would be marked spam)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:118
+msgid "Approved comments that would be held"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:119
+msgid "Missed spam (spam that would be allowed)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:120
+msgid "Spam that would be held for moderation"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:121
+msgid "Spam caught"
+msgstr ""
+
+#. translators: 1: spam threshold, 2: hold threshold, 3: false positives, 4: spam caught, 5: total spam
+#: includes/Admin/SettingsPage.php:123
+#, php-format
+msgid "On this sample, a spam threshold of %1$s and a hold threshold of %2$s would give %3$d false positives and catch %4$d of %5$d spam."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:124
+msgid "This reflects past comments only; nothing was changed. Comments Jev scored differently from your moderation:"
+msgstr ""
+
+#. translators: %d: number of comments
+#: includes/Admin/SettingsPage.php:126
+#, php-format
+msgid "%d comments could not be classified."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:127
+msgid "Jev agreed with every moderated comment in the sample."
+msgstr ""
+
+#. translators: %s: model id
+#: includes/Admin/SettingsPage.php:129
+#, php-format
+msgid "Model: %s"
+msgstr ""
+
+#. translators: %s: page context level, e.g. "Standard"
+#: includes/Admin/SettingsPage.php:131
+#, php-format
+msgid "Page context: %s"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:132
+msgid "Comment"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:133
+msgid "Your moderation"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:135
+msgid "Spam"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:136
+msgid "Approved"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:137
+msgid "Hold"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:138
+msgid "Allow"
+msgstr ""
+
+#. translators: %s: model id
+#: includes/Admin/SettingsPage.php:140
+#, php-format
+msgid "Default: %s"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:190
+msgid "Connection"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:191
+msgid "Provider"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:192
+msgid "API key"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:194
+msgid "Endpoint URL"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:195
+msgid "Timeout"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:196
+#: includes/Admin/SettingsPage.php:343
+msgid "Test connection"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:198
+msgid "Detection"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:199
+msgid "Spam threshold"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:200
+msgid "Hold threshold"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:201
+msgid "Abusive comments"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:202
+msgid "When the service is unavailable"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:203
+msgid "About this site"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:204
+msgid "Page context"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:205
+msgid "Skip checks for"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:207
+msgid "Privacy"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:208
+msgid "Also send"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:209
+msgid "Comment form notice"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:211
+msgid "Integrations"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:212
+msgid "Check submissions from"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:234
+msgid "Jev is a decision model by TypeSafe AI. Pick the service that hosts it for you and paste an API key from that service."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:241
+msgid "Each submission gets a spam probability from 0 to 1. Above the spam threshold it goes to the Spam folder; above the hold threshold it waits for moderation; below that WordPress decides as usual. Jev never approves anything on its own."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:248
+msgid "Every check sends the submission text, the author name and website, and details of the page it belongs to (title, type, tags and categories and, depending on the Page context setting, an excerpt and headings; for replies, the parent comment) to the selected provider. Nothing else is stored from the response except the probabilities."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:268
+msgid "Get a key"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:271
+msgid "Free-tier model list"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:285
+msgid "Defined by the JEV_GUARD_API_KEY constant in wp-config.php."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:293
+msgid "Paste your API key"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:296
+msgid "A key is stored. Leave the field empty to keep it, or paste a new one to replace it. You can also define JEV_GUARD_API_KEY in wp-config.php."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:312
+msgid "Leave empty to use the provider default. Once your thresholds are calibrated, pin the versioned model id shown by \"Test connection\" (for example jev-1.13.0) so a model upgrade cannot shift your scores."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:334
+msgid "seconds"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:336
+msgid "Checks run while the visitor waits, so keep this short. Typical answers take 1–2 seconds."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:345
+msgid "Sends a canned spam comment using the values above (unsaved changes included) and shows the model version, latency and probability."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:357
+msgid "Probability at or above which a submission is marked as spam. 0.85 is a good default for English sites; raise it for other languages or after a calibration run shows false positives."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:369
+msgid "Comments between this and the spam threshold are held for moderation. Comments that look like spam but clearly respond to the page are held too. Contact-form entries have no queue and are delivered."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:376
+msgid "Hold comments Jev rates as abusive, hateful, threatening or harassing, even when they are not spam"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:389
+msgid "Let WordPress decide as usual (recommended) — the comment is re-checked automatically within 20 minutes and moved to Spam if needed"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:395
+msgid "Hold the comment for moderation"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:407
+msgid "e.g. A German-language cooking blog for home cooks; readers often share links to their own recipes; product reviews are in English."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:410
+msgid "Sent with every check. Describe what the site is about, who comments, and which languages are expected — this helps Jev most on non-English sites."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:420
+msgid "Title, type, tags and categories; no text from the page. Choose this if you sell access to your content or it must not leave the server."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:421
+msgid "Also the excerpt (or the first ~300 characters) and the page's headings."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:422
+msgid "The first ~1,200 characters plus headings, about four times as much page text. Try it when spam is on-topic and well written. Save, then run the Calibration tool to compare."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:436
+msgid "The text of password-protected, private and unpublished pages is never sent at any level; the parent comment of a reply always is. Developers can adjust or blank the page context with the jev_guard_post_context filter."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:446
+msgid "Title only"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:447
+msgid "Standard (recommended)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:448
+msgid "Extended"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:457
+msgid "Users who can moderate comments"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:459
+msgid "Authors with a previously approved comment"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:461
+msgid "Do check pingbacks and trackbacks"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:463
+msgid "Comments matching the Disallowed Comment Keys list and comments already flagged by another spam plugin are never sent."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:471
+msgid "Author email address (helps with repeat offenders)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:473
+msgid "IP address"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:475
+msgid "Browser user agent and referer (strong bot signal)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:483
+msgid "Show \"This site uses Jev by TypeSafe AI to reduce spam\" under the comment form, linking to your privacy policy"
+msgstr ""
+
+#. translators: %s: URL of the privacy policy guide
+#: includes/Admin/SettingsPage.php:488
+#, php-format
+msgid "Suggested privacy-policy wording is available in the <a href=\"%s\">Policy Guide</a>."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:511
+msgid "(not installed)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:553
+msgid "DISABLE_WP_CRON is set. The automatic re-check of comments that could not be classified depends on WP-Cron; make sure a system cron job runs wp-cron.php."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:558
+msgid "Statistics were reset."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:571
+msgid "Calibration"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:572
+msgid "Runs Jev on a sample of comments you already moderated (newest Spam and Approved comments, excluding those written by moderators) and compares the results with your decisions at the thresholds saved above. Read-only: no comment is changed and nothing is stored."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:574
+msgid "Save an API key first."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:577
+msgid "Sample size per class"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:583
+msgid "Run calibration"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:596
+msgid "Statistics"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:601
+msgid "Total"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:611
+msgid "Marked as spam"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:612
+msgid "Held for moderation"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:613
+msgid "Errors (service unavailable)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:614
+msgid "False positives (un-spammed by a moderator)"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:615
+msgid "Missed spam (spammed by a moderator)"
+msgstr ""
+
+#. translators: %s: date
+#: includes/Admin/SettingsPage.php:633
+#, php-format
+msgid "Counting since %s."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:637
+msgid "Reset"
+msgstr ""
+
+#: includes/Api/Client.php:79
+#: includes/Integrations/Comments.php:369
+msgid "No API key is configured."
+msgstr ""
+
+#: includes/Api/Client.php:99
+msgid "The endpoint URL is missing or invalid."
+msgstr ""
+
+#: includes/Api/Client.php:102
+msgid "No model id is configured."
+msgstr ""
+
+#: includes/Api/Client.php:237
+msgid "The service returned a response that is not JSON."
+msgstr ""
+
+#: includes/Api/Client.php:240
+msgid "The service response contains no answers."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/Api/Client.php:254
+#, php-format
+msgid "Authentication failed (HTTP %d). Check the API key."
+msgstr ""
+
+#: includes/Api/Client.php:257
+msgid "The provider reports insufficient credit (HTTP 402)."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/Api/Client.php:262
+#, php-format
+msgid "The provider rejected the request (HTTP %d)."
+msgstr ""
+
+#: includes/Api/Client.php:267
+msgid "The provider rate limit was hit (HTTP 429)."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/Api/Client.php:273
+#, php-format
+msgid "The provider is overloaded (HTTP %d)."
+msgstr ""
+
+#. translators: %d: HTTP status code
+#: includes/Api/Client.php:278
+#, php-format
+msgid "Unexpected HTTP %d from the provider."
+msgstr ""
+
+#: includes/Api/Client.php:329
+msgid "No API key"
+msgstr ""
+
+#: includes/Api/Client.php:330
+msgid "Not configured"
+msgstr ""
+
+#: includes/Api/Client.php:331
+msgid "Authentication failed"
+msgstr ""
+
+#: includes/Api/Client.php:332
+msgid "Insufficient credit"
+msgstr ""
+
+#: includes/Api/Client.php:333
+msgid "Request rejected"
+msgstr ""
+
+#: includes/Api/Client.php:334
+msgid "Rate limited"
+msgstr ""
+
+#: includes/Api/Client.php:335
+msgid "Provider overloaded"
+msgstr ""
+
+#: includes/Api/Client.php:336
+msgid "Timed out"
+msgstr ""
+
+#: includes/Api/Client.php:337
+msgid "Connection error"
+msgstr ""
+
+#: includes/Api/Client.php:338
+msgid "Unexpected response"
+msgstr ""
+
+#: includes/Api/Providers.php:27
+msgid "TypeSafe AI (direct)"
+msgstr ""
+
+#: includes/Api/Providers.php:33
+msgid "Create a key in the TypeSafe console. Pay-as-you-go, currently about 1,200 requests per minute — the best choice for large Check-for-Spam sweeps."
+msgstr ""
+
+#: includes/Api/Providers.php:36
+msgid "Vercel AI Gateway"
+msgstr ""
+
+#: includes/Api/Providers.php:42
+msgid "Every Vercel team currently gets a $5 monthly AI Gateway credit (a payment method must be on file, nothing is charged unless you buy credits). The free tier is rate-limited: single comments are fine, but bulk Check-for-Spam and Calibration runs will pause on 429 and resume slowly. Buying credits lifts the limits."
+msgstr ""
+
+#: includes/Api/Providers.php:46
+msgid "OpenRouter"
+msgstr ""
+
+#: includes/Api/Providers.php:55
+msgid "Uses OpenRouter's alpha decisions endpoint. Pay-as-you-go at list price; no free tier for Jev."
+msgstr ""
+
+#: includes/Api/Providers.php:58
+msgid "Custom TypeSafe-compatible endpoint"
+msgstr ""
+
+#: includes/Api/Providers.php:64
+msgid "A proxy or another gateway that accepts the TypeSafe System One request format. Enter the full URL and, if it expects one, the model id (defaults to jev-latest)."
+msgstr ""
+
+#: includes/Integrations/Comments.php:75
+msgid "Comments, reviews and pingbacks"
+msgstr ""
+
+#: includes/Integrations/Comments.php:366
+#: includes/Integrations/Comments.php:445
+msgid "Comment not found."
+msgstr ""
+
+#: includes/Integrations/ContactForm7.php:51
+msgid "Contact Form 7"
+msgstr ""
+
+#: includes/Privacy.php:36
+msgid "Suggested text, adjust the provider name to the one selected in Settings → Jev Guard."
+msgstr ""
+
+#: includes/Privacy.php:37
+msgid "We use Jev, a decision model by TypeSafe AI, to detect spam in comments, reviews and contact-form submissions. When you submit one, its text, the name and website you entered, details of the page it was posted on (title, type, tags and categories and, depending on our configuration, an excerpt and headings), the comment you are replying to and, depending on our configuration, your email address, IP address and browser user agent are sent to the service that hosts the model (TypeSafe AI, Vercel AI Gateway or OpenRouter) for the sole purpose of estimating whether the submission is spam. The service returns probabilities only; we store those probabilities alongside the comment and do not store any additional personal data from the check."
+msgstr ""
+
+#: includes/Privacy.php:62
+msgid "This site uses Jev by TypeSafe AI to reduce spam."
+msgstr ""
+
+#: includes/Privacy.php:65
+msgid "Learn how your comment data is processed."
+msgstr ""
+
+#: includes/Verdict.php:281
+msgid "Legitimate"
+msgstr ""
+
+#: includes/Verdict.php:282
+msgid "Commercial promotion"
+msgstr ""
+
+#: includes/Verdict.php:283
+msgid "SEO link spam"
+msgstr ""
+
+#: includes/Verdict.php:284
+msgid "Scam or phishing"
+msgstr ""
+
+#: includes/Verdict.php:285
+msgid "Gibberish or bot"
+msgstr ""
+
+#: includes/Verdict.php:286
+msgid "Abusive"
+msgstr ""
+
+#: includes/Verdict.php:310
+msgid "above the spam threshold"
+msgstr ""
+
+#: includes/Verdict.php:311
+msgid "link-heavy with a spam signal"
+msgstr ""
+
+#: includes/Verdict.php:312
+msgid "looks like spam but responds to the page"
+msgstr ""
+
+#: includes/Verdict.php:313
+msgid "borderline probability"
+msgstr ""
+
+#: includes/Verdict.php:314
+msgid "abusive or harassing"
+msgstr ""
+
+#: includes/Verdict.php:315
+msgid "below the hold threshold"
+msgstr ""
+
+#: includes/Verdict.php:316
+msgid "changed by a filter"
+msgstr ""
+
+#. translators: %d: spam probability as a percentage
+#: includes/Verdict.php:335
+#, php-format
+msgid "%d%%"
+msgstr ""
+
+#: includes/Verdict.php:343
+msgid "held"
+msgstr ""

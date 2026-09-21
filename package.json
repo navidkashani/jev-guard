@@ -1,0 +1,26 @@
+{
+  "name": "jev-guard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dev tooling for the Jev Guard WordPress plugin (wp-env based test site and PHPUnit runner).",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navidkashani/jev-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/navidkashani/jev-guard/issues"
+  },
+  "homepage": "https://github.com/navidkashani/jev-guard#readme",
+  "scripts": {
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "destroy": "wp-env destroy",
+    "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/jev-guard vendor/bin/phpunit",
+    "test:php:7.4": "WP_ENV_PHP_VERSION=7.4 wp-env start && WP_ENV_PHP_VERSION=7.4 npm run test:php",
+    "cli": "wp-env run cli wp"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^11.15.0"
+  }
+}

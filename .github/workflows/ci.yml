@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  phpcs:
+    name: phpcs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+
+      - uses: ramsey/composer-install@v3
+
+      - run: composer validate --strict --no-check-publish
+
+      - run: composer phpcs
+
+  phpunit:
+    name: PHPUnit (PHP ${{ matrix.php }}, WP ${{ matrix.wp }}, CF7 ${{ matrix.cf7 }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Declared floor. CF7 6.x requires WordPress 6.7, so the last 5.9 release is used here.
+          - { php: '7.4', wp: '6.4.11', cf7: '5.9.8' }
+          - { php: '7.4', wp: 'latest', cf7: '6.1.7' }
+          - { php: '8.2', wp: 'latest', cf7: '6.1.7' }
+          - { php: '8.4', wp: 'latest', cf7: '6.1.7' }
+          # Matches .wp-env.json.
+          - { php: '8.5', wp: 'latest', cf7: '6.1.7' }
+
+    services:
+      mariadb:
+        image: mariadb:lts
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: wordpress_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      WP_TESTS_DIR: /tmp/wordpress-tests-lib
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli, mbstring, intl, zip
+          tools: composer:v2
+          coverage: none
+
+      - uses: ramsey/composer-install@v3
+
+      - name: Install WordPress ${{ matrix.wp }} and the test library
+        run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }} ${{ matrix.cf7 }}
+
+      - run: vendor/bin/phpunit
