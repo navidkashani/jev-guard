@@ -6,7 +6,9 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
-## [1.1.0] - 2026-09-26
+## [1.0.0] - 2026-09-26
+
+First release as SpamLens, and the first on WordPress.org. The changes below are relative to Jev Guard 1.0.0, the GitHub-only preview.
 
 ### Added
 
@@ -32,9 +34,9 @@ All notable changes to this project are documented here. The format follows
 
 - `Update URI` header (not allowed on WordPress.org).
 
-## [1.0.0] - 2026-09-21
+## Jev Guard 1.0.0 - 2026-09-21
 
-Released on GitHub as Jev Guard.
+GitHub-only preview under the name Jev Guard (tag `v1.0.0` before the rename).
 
 ### Added
 
@@ -47,6 +49,5 @@ Released on GitHub as Jev Guard.
 - A request the provider rejects as too large is retried once without the page text.
 - Calibration tool, statistics, and a "Jev" column in the comments list with decision, category and hold reason.
 
-[Unreleased]: https://github.com/veronalabs/spamlens/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/veronalabs/spamlens/compare/v1.0.0...v1.1.0
+[Unreleased]: https://github.com/veronalabs/spamlens/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/veronalabs/spamlens/releases/tag/v1.0.0

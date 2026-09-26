@@ -1,6 +1,6 @@
 {
   "name": "spamlens",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Front end and dev tooling for the SpamLens WordPress plugin: the settings app (React, Vite, Tailwind), the comments-screen script, wp-env and the test runners.",
   "license": "GPL-2.0-or-later",

@@ -22,7 +22,7 @@ class UninstallTest extends SpamLens_TestCase {
 		$user    = self::factory()->user->create();
 		Settings::update( array( 'provider' => 'vercel' ) );
 		Stats::bump( 'checked' );
-		update_option( 'spamlens_version', '1.1.0' );
+		update_option( 'spamlens_version', '1.0.0' );
 		update_option( 'spamlens_models', array( 'jev-1.13.0' ) );
 		update_option( 'spamlens_last_error', array( 'code' => 'auth' ) );
 		update_comment_meta( $comment, Comments::META, array( 'decision' => 'spam' ) );
