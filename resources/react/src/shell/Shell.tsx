@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { __ } from '@wordpress/i18n';
-import { ArrowRight, ArrowUpRight, CheckCircle2, AlertCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CheckCircle2, AlertCircle, AlertTriangle } from 'lucide-react';
 import { adminSettings, type Notice } from '@/settings';
 import { Notices } from '@/shell/Notices';
 import { cn } from '@/lib/utils';
@@ -8,14 +8,13 @@ import type { Screen } from '@/lib/screen';
 
 const measure = 'mx-auto w-full max-w-[1260px] px-10 max-[960px]:px-6 max-[782px]:px-4';
 
-/** The SpamLens wordmark: a shield and the name, in the band's text colour. */
+/**
+ * The SpamLens logo (tower and name), the version for dark backgrounds: resources/assets/logo-dark.png, 128px tall
+ * so it stays sharp at 2x and 3x.
+ */
 export function Wordmark({ size = 'md' }: { size?: 'md' | 'sm' }) {
-  return (
-    <span className={cn('inline-flex items-center gap-2 font-semibold tracking-[-0.01em]', size === 'md' ? 'text-[16px]' : 'text-[15px]')}>
-      <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-brand text-white" aria-hidden="true"><ShieldCheck size={17} strokeWidth={2.2} /></span>
-      {__('SpamLens', 'spamlens')}
-    </span>
-  );
+  const h = size === 'md' ? 39 : 42;
+  return <img src={adminSettings().logos.logo} alt={__('SpamLens', 'spamlens')} height={h} style={{ height: h, width: 'auto' }} className="block" />;
 }
 
 /** The publisher's SVG (resources/assets/veronalabs.svg), inlined so currentColor applies. A file shipped with the plugin. */

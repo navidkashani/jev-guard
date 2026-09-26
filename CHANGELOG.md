@@ -10,7 +10,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
-- React settings screen (Overview, Settings, Calibration) in the VeronaLabs admin style.
+- React settings screen (Overview, Settings, Calibration) in the VeronaLabs admin style, with the SpamLens logo.
+- WordPress.org directory assets: icon, banner and screenshots.
 - REST routes under `spamlens/v1` for settings, test connection, calibration, statistics, re-check and the Pending sweep.
 - "Remove key" on the settings screen.
 - Model list: the provider default, or a versioned model id that has answered on the site (per provider), to pin after calibrating.
