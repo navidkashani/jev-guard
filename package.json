@@ -22,7 +22,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:pot": "wp i18n make-pot . languages/spamlens.pot --slug=spamlens --domain=spamlens --exclude=node_modules,vendor,packages,resources,tests",
+    "build:pot": "wp i18n make-pot . resources/languages/spamlens.pot --slug=spamlens --domain=spamlens --exclude=node_modules,vendor,packages,resources/react,resources/entries,resources/scss,tests,dist",
     "start": "wp-env start",
     "stop": "wp-env stop",
     "destroy": "wp-env destroy",

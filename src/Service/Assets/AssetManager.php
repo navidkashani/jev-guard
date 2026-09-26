@@ -58,7 +58,7 @@ class AssetManager {
 			wp_enqueue_style( self::APP_HANDLE, SPAMLENS_URL . $css, array(), self::version( $css ) );
 		}
 		wp_enqueue_script( self::APP_HANDLE, SPAMLENS_URL . $js, array( 'wp-i18n', 'wp-api-fetch' ), self::version( $js ), true );
-		wp_set_script_translations( self::APP_HANDLE, 'spamlens', SPAMLENS_DIR . 'languages' );
+		wp_set_script_translations( self::APP_HANDLE, 'spamlens', SPAMLENS_DIR . 'resources/languages' );
 		wp_add_inline_script( self::APP_HANDLE, 'window.spamlensAdmin = ' . wp_json_encode( $this->app_data() ) . ';', 'before' );
 	}
 
@@ -104,7 +104,7 @@ class AssetManager {
 		}
 		if ( file_exists( SPAMLENS_DIR . $js ) ) {
 			wp_enqueue_script( self::COMMENTS_HANDLE, SPAMLENS_URL . $js, array( 'wp-i18n', 'wp-api-fetch' ), self::version( $js ), true );
-			wp_set_script_translations( self::COMMENTS_HANDLE, 'spamlens', SPAMLENS_DIR . 'languages' );
+			wp_set_script_translations( self::COMMENTS_HANDLE, 'spamlens', SPAMLENS_DIR . 'resources/languages' );
 		}
 	}
 

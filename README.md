@@ -89,6 +89,8 @@ src/Service/Assets/           enqueues the built files from public/
 resources/react/              settings app (React, TypeScript, Tailwind)
 resources/entries/            comments-screen script
 resources/scss/               comments-screen styles
+resources/assets/             logos used at runtime
+resources/languages/          translation template (spamlens.pot)
 views/                        PHP templates
 tests/                        PHPUnit (WordPress test library)
 ```

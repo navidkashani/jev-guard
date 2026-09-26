@@ -46,7 +46,7 @@ SpamLens is an independent plugin by VeronaLabs and is not affiliated with, endo
 
 = Source code =
 
-The settings screen and the comments-screen script are built from the TypeScript and SCSS sources in the plugin's `resources/` folder (React, Vite, Tailwind CSS). The same sources, the build configuration and the tests are on GitHub: https://github.com/veronalabs/spamlens. To rebuild: `npm ci && npm run build`.
+The settings screen and the comments-screen script in `public/` are built (React, Vite, Tailwind CSS) from TypeScript and SCSS sources that are not included in the plugin zip. The sources, the build configuration and the tests are on GitHub: https://github.com/veronalabs/spamlens (folders `resources/react`, `resources/entries` and `resources/scss`). To rebuild: `npm ci && npm run build`.
 
 == External services ==
 

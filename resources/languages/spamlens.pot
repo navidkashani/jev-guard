@@ -9,33 +9,23 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-26T06:28:13+00:00\n"
+"POT-Creation-Date: 2026-09-26T09:35:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: spamlens\n"
 
 #. Plugin Name of the plugin
 #: spamlens.php
-#: dist/spamlens/src/Service/Admin/AdminManager.php:45
-#: dist/spamlens/src/Service/Admin/AdminManager.php:46
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:73
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:78
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:255
-#: dist/spamlens/src/Service/Privacy/Privacy.php:52
 #: src/Service/Admin/AdminManager.php:45
 #: src/Service/Admin/AdminManager.php:46
 #: src/Service/Admin/CommentsScreen.php:73
 #: src/Service/Admin/CommentsScreen.php:78
 #: src/Service/Admin/CommentsScreen.php:255
 #: src/Service/Privacy/Privacy.php:52
-#: dist/spamlens/public/app/settings.js:12833
-#: dist/spamlens/public/app/settings.js:13346
-#: dist/spamlens/public/app/settings.js:14568
-#: dist/spamlens/public/app/settings.js:14612
-#: public/app/settings.js:12850
-#: public/app/settings.js:13362
-#: public/app/settings.js:14625
-#: public/app/settings.js:14669
+#: public/app/settings.js:12829
+#: public/app/settings.js:13347
+#: public/app/settings.js:14610
+#: public/app/settings.js:14654
 msgid "SpamLens"
 msgstr ""
 
@@ -59,497 +49,391 @@ msgstr ""
 msgid "https://veronalabs.com/"
 msgstr ""
 
-#: dist/spamlens/spamlens.php:35
 #: spamlens.php:35
 msgid "SpamLens is missing its autoloader. Run composer install in the plugin folder, or install the release zip."
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/AdminManager.php:105
-#: dist/spamlens/src/Service/Admin/Notices.php:67
 #: src/Service/Admin/AdminManager.php:105
 #: src/Service/Admin/Notices.php:67
-#: dist/spamlens/public/app/settings.js:12864
-#: dist/spamlens/public/app/settings.js:13454
-#: dist/spamlens/public/app/settings.js:13666
-#: public/app/settings.js:12881
-#: public/app/settings.js:13470
-#: public/app/settings.js:13682
+#: public/app/settings.js:12866
+#: public/app/settings.js:13455
+#: public/app/settings.js:13667
 msgid "Settings"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:111
 #: src/Service/Admin/CommentsScreen.php:111
 msgid "Skipped"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:116
 #: src/Service/Admin/CommentsScreen.php:116
 msgid "Awaiting retry"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:116
 #: src/Service/Admin/CommentsScreen.php:116
 msgid "Error"
 msgstr ""
 
 #. translators: 1: reason, 2: model id, 3: date
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:125
 #: src/Service/Admin/CommentsScreen.php:125
 #, php-format
 msgid "Reason: %1$s. Model %2$s, %3$s"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:132
 #: src/Service/Admin/CommentsScreen.php:132
 msgid "Not checked"
 msgstr ""
 
 #. translators: %d: spam probability as a percentage
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:158
 #: src/Service/Admin/CommentsScreen.php:158
 #, php-format
 msgid "Spam %d%%"
 msgstr ""
 
 #. translators: %d: spam probability as a percentage
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:162
 #: src/Service/Admin/CommentsScreen.php:162
 #, php-format
 msgid "Held %d%%"
 msgstr ""
 
 #. translators: %d: spam probability as a percentage
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:165
-#: dist/spamlens/src/Service/Classifier/Verdict.php:332
 #: src/Service/Admin/CommentsScreen.php:165
 #: src/Service/Classifier/Verdict.php:332
 #, php-format
 msgid "%d%% spam"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:195
 #: src/Service/Admin/CommentsScreen.php:195
 msgid "flagged by another plugin"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:196
 #: src/Service/Admin/CommentsScreen.php:196
 msgid "disallowed keys"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:197
 #: src/Service/Admin/CommentsScreen.php:197
 msgid "empty"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:198
 #: src/Service/Admin/CommentsScreen.php:198
 msgid "moderator"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:199
 #: src/Service/Admin/CommentsScreen.php:199
 msgid "previously approved author"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:200
 #: src/Service/Admin/CommentsScreen.php:200
 msgid "pingback"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:224
 #: src/Service/Admin/CommentsScreen.php:224
 msgid "Re-check this comment with SpamLens"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:225
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:312
 #: src/Service/Admin/CommentsScreen.php:225
 #: src/Service/Admin/CommentsScreen.php:312
 msgid "Re-check with SpamLens"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:244
 #: src/Service/Admin/CommentsScreen.php:244
 msgid "Check for Spam"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:273
 #: src/Service/Admin/CommentsScreen.php:273
 msgid "Decision"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:274
 #: src/Service/Admin/CommentsScreen.php:274
 msgid "Spam probability"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:275
 #: src/Service/Admin/CommentsScreen.php:275
 msgid "Responds to page"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:276
 #: src/Service/Admin/CommentsScreen.php:276
 msgid "Abuse score (0–2)"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:277
 #: src/Service/Admin/CommentsScreen.php:277
 msgid "Category"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:278
 #: src/Service/Admin/CommentsScreen.php:278
 msgid "Links"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:279
 #: src/Service/Admin/CommentsScreen.php:279
-#: dist/spamlens/public/app/settings.js:13383
-#: dist/spamlens/public/app/settings.js:13980
-#: public/app/settings.js:13399
-#: public/app/settings.js:14034
+#: public/app/settings.js:13384
+#: public/app/settings.js:14019
 msgid "Model"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:280
 #: src/Service/Admin/CommentsScreen.php:280
-#: dist/spamlens/public/app/settings.js:13469
-#: public/app/settings.js:13485
+#: public/app/settings.js:13470
 msgid "Checked"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:281
 #: src/Service/Admin/CommentsScreen.php:281
 msgid "Latency"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:281
 #: src/Service/Admin/CommentsScreen.php:281
 msgid "cached"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:288
 #: src/Service/Admin/CommentsScreen.php:288
 msgid "Raw answers"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/CommentsScreen.php:293
 #: src/Service/Admin/CommentsScreen.php:293
 msgid "History"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/Notices.php:46
 #: src/Service/Admin/Notices.php:46
 msgid "SpamLens needs an API key before it can check comments."
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/Notices.php:48
 #: src/Service/Admin/Notices.php:48
-#: dist/spamlens/public/app/settings.js:14320
-#: public/app/settings.js:14377
+#: public/app/settings.js:14362
 msgid "Open the settings"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/Notices.php:50
 #: src/Service/Admin/Notices.php:50
-#: dist/spamlens/public/app/settings.js:13049
-#: public/app/settings.js:13065
+#: public/app/settings.js:13050
 msgid "Dismiss"
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/Notices.php:57
 #: src/Service/Admin/Notices.php:57
 msgid "Check the key and the account balance in the provider console."
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/Notices.php:59
 #: src/Service/Admin/Notices.php:59
 msgid "On Vercel a valid payment method must be on file (nothing is charged unless you buy credits). Add one under Team Settings → Billing, then create the key again under AI Gateway → API Keys."
 msgstr ""
 
-#: dist/spamlens/src/Service/Admin/Notices.php:63
 #: src/Service/Admin/Notices.php:63
 msgid "SpamLens cannot reach the spam service:"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:81
-#: dist/spamlens/src/Service/Integrations/Comments.php:369
 #: src/Service/Api/Client.php:81
 #: src/Service/Integrations/Comments.php:369
 #: src/Service/Rest/RestController.php:337
 msgid "No API key is configured."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:101
 #: src/Service/Api/Client.php:101
 msgid "The endpoint URL is missing or invalid."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:104
 #: src/Service/Api/Client.php:104
 msgid "No model id is configured."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:240
 #: src/Service/Api/Client.php:240
 msgid "The service returned a response that is not JSON."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:243
 #: src/Service/Api/Client.php:243
 msgid "The service response contains no answers."
 msgstr ""
 
 #. translators: %d: HTTP status code
-#: dist/spamlens/src/Service/Api/Client.php:257
 #: src/Service/Api/Client.php:257
 #, php-format
 msgid "Authentication failed (HTTP %d). Check the API key."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:260
 #: src/Service/Api/Client.php:260
 msgid "The provider reports insufficient credit (HTTP 402)."
 msgstr ""
 
 #. translators: %d: HTTP status code
-#: dist/spamlens/src/Service/Api/Client.php:265
 #: src/Service/Api/Client.php:265
 #, php-format
 msgid "The provider rejected the request (HTTP %d)."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:270
 #: src/Service/Api/Client.php:270
 msgid "The provider rate limit was hit (HTTP 429)."
 msgstr ""
 
 #. translators: %d: HTTP status code
-#: dist/spamlens/src/Service/Api/Client.php:276
 #: src/Service/Api/Client.php:276
 #, php-format
 msgid "The provider is overloaded (HTTP %d)."
 msgstr ""
 
 #. translators: %d: HTTP status code
-#: dist/spamlens/src/Service/Api/Client.php:281
 #: src/Service/Api/Client.php:281
 #, php-format
 msgid "Unexpected HTTP %d from the provider."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:361
 #: src/Service/Api/Client.php:371
 msgid "No API key"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:362
 #: src/Service/Api/Client.php:372
 msgid "Not configured"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:363
 #: src/Service/Api/Client.php:373
 msgid "Authentication failed"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:364
 #: src/Service/Api/Client.php:374
 msgid "Insufficient credit"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:365
 #: src/Service/Api/Client.php:375
 msgid "Request rejected"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:366
 #: src/Service/Api/Client.php:376
 msgid "Rate limited"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:367
 #: src/Service/Api/Client.php:377
 msgid "Provider overloaded"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:368
 #: src/Service/Api/Client.php:378
 msgid "Timed out"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:369
 #: src/Service/Api/Client.php:379
 msgid "Connection error"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Client.php:370
 #: src/Service/Api/Client.php:380
 msgid "Unexpected response"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:27
 #: src/Service/Api/Providers.php:27
 msgid "TypeSafe AI (direct)"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:33
 #: src/Service/Api/Providers.php:33
 msgid "Create a key in the TypeSafe console. Pay-as-you-go, currently about 1,200 requests per minute — the best choice for large Check-for-Spam sweeps."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:36
 #: src/Service/Api/Providers.php:36
 msgid "Vercel AI Gateway"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:42
 #: src/Service/Api/Providers.php:42
 msgid "Every Vercel team currently gets a $5 monthly AI Gateway credit (a payment method must be on file, nothing is charged unless you buy credits). The free tier is rate-limited: single comments are fine, but bulk Check-for-Spam and Calibration runs will pause on 429 and resume slowly. Buying credits lifts the limits."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:46
 #: src/Service/Api/Providers.php:46
 msgid "OpenRouter"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:55
 #: src/Service/Api/Providers.php:55
 msgid "Uses OpenRouter's alpha decisions endpoint. Pay-as-you-go at list price; no free tier for Jev."
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:58
 #: src/Service/Api/Providers.php:58
 msgid "Custom TypeSafe-compatible endpoint"
 msgstr ""
 
-#: dist/spamlens/src/Service/Api/Providers.php:64
 #: src/Service/Api/Providers.php:64
 msgid "A proxy or another gateway that accepts the TypeSafe System One request format. Enter the full URL and, if it expects one, the model id (defaults to jev-latest)."
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:281
 #: src/Service/Classifier/Verdict.php:281
 msgid "Legitimate"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:282
 #: src/Service/Classifier/Verdict.php:282
 msgid "Commercial promotion"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:283
 #: src/Service/Classifier/Verdict.php:283
 msgid "SEO link spam"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:284
 #: src/Service/Classifier/Verdict.php:284
 msgid "Scam or phishing"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:285
 #: src/Service/Classifier/Verdict.php:285
 msgid "Gibberish or bot"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:286
 #: src/Service/Classifier/Verdict.php:286
 msgid "Abusive"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:310
 #: src/Service/Classifier/Verdict.php:310
 msgid "above the spam threshold"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:311
 #: src/Service/Classifier/Verdict.php:311
 msgid "link-heavy with a spam signal"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:312
 #: src/Service/Classifier/Verdict.php:312
 msgid "looks like spam but responds to the page"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:313
 #: src/Service/Classifier/Verdict.php:313
 msgid "borderline probability"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:314
 #: src/Service/Classifier/Verdict.php:314
 msgid "abusive or harassing"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:315
 #: src/Service/Classifier/Verdict.php:315
 msgid "below the hold threshold"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:316
 #: src/Service/Classifier/Verdict.php:316
 msgid "changed by a filter"
 msgstr ""
 
 #. translators: %d: spam probability as a percentage
-#: dist/spamlens/src/Service/Classifier/Verdict.php:335
 #: src/Service/Classifier/Verdict.php:335
 #, php-format
 msgid "%d%%"
 msgstr ""
 
-#: dist/spamlens/src/Service/Classifier/Verdict.php:343
 #: src/Service/Classifier/Verdict.php:343
 msgid "held"
 msgstr ""
 
-#: dist/spamlens/src/Service/Integrations/Comments.php:75
 #: src/Service/Integrations/Comments.php:75
 msgid "Comments, reviews and pingbacks"
 msgstr ""
 
-#: dist/spamlens/src/Service/Integrations/Comments.php:366
-#: dist/spamlens/src/Service/Integrations/Comments.php:445
-#: dist/spamlens/src/Service/Rest/RestController.php:506
 #: src/Service/Integrations/Comments.php:366
 #: src/Service/Integrations/Comments.php:445
 #: src/Service/Rest/RestController.php:516
 msgid "Comment not found."
 msgstr ""
 
-#: dist/spamlens/src/Service/Integrations/ContactForm7.php:51
 #: src/Service/Integrations/ContactForm7.php:51
 msgid "Contact Form 7"
 msgstr ""
 
-#: dist/spamlens/src/Service/Privacy/Privacy.php:37
 #: src/Service/Privacy/Privacy.php:37
 msgid "Suggested text, adjust the provider name to the one selected in Settings → SpamLens."
 msgstr ""
 
-#: dist/spamlens/src/Service/Privacy/Privacy.php:38
 #: src/Service/Privacy/Privacy.php:38
 msgid "We use Jev, a decision model by TypeSafe AI, to detect spam in comments, reviews and contact-form submissions. When you submit one, its text, the name and website you entered, details of the page it was posted on (title, type, tags and categories and, depending on our configuration, an excerpt and headings), the comment you are replying to and, depending on our configuration, your email address, IP address and browser user agent are sent to the service that hosts the model (TypeSafe AI, Vercel AI Gateway or OpenRouter) for the sole purpose of estimating whether the submission is spam. The service returns probabilities only; we store those probabilities alongside the comment and do not store any additional personal data from the check."
 msgstr ""
 
-#: dist/spamlens/src/Service/Privacy/Privacy.php:63
 #: src/Service/Privacy/Privacy.php:63
 msgid "This site uses Jev by TypeSafe AI to reduce spam."
 msgstr ""
 
-#: dist/spamlens/src/Service/Privacy/Privacy.php:66
 #: src/Service/Privacy/Privacy.php:66
 msgid "Learn how your comment data is processed."
 msgstr ""
 
-#: dist/spamlens/src/Service/Rest/RestController.php:365
-#: dist/spamlens/src/Service/Rest/RestController.php:383
-#: dist/spamlens/src/Service/Rest/RestController.php:502
-#: dist/spamlens/src/Service/Rest/RestController.php:531
 #: src/Service/Rest/RestController.php:375
 #: src/Service/Rest/RestController.php:393
 #: src/Service/Rest/RestController.php:512
@@ -557,696 +441,572 @@ msgstr ""
 msgid "Comments integration unavailable."
 msgstr ""
 
-#: dist/spamlens/src/Service/Rest/RestController.php:539
 #: src/Service/Rest/RestController.php:549
 msgid "Another Check for Spam run is in progress."
 msgstr ""
 
-#: dist/spamlens/src/Service/Settings/Settings.php:244
 #: src/Service/Settings/Settings.php:263
 msgid "Title only"
 msgstr ""
 
-#: dist/spamlens/src/Service/Settings/Settings.php:245
 #: src/Service/Settings/Settings.php:264
 msgid "Standard (recommended)"
 msgstr ""
 
-#: dist/spamlens/src/Service/Settings/Settings.php:246
 #: src/Service/Settings/Settings.php:265
 msgid "Extended"
 msgstr ""
 
-#: dist/spamlens/src/Service/Settings/Settings.php:257
 #: src/Service/Settings/Settings.php:276
 msgid "Title, type, tags and categories; no text from the page. Choose this if you sell access to your content or it must not leave the server."
 msgstr ""
 
-#: dist/spamlens/src/Service/Settings/Settings.php:258
 #: src/Service/Settings/Settings.php:277
 msgid "Also the excerpt (or the first ~300 characters) and the page's headings."
 msgstr ""
 
-#: dist/spamlens/src/Service/Settings/Settings.php:259
 #: src/Service/Settings/Settings.php:278
 msgid "The first ~1,200 characters plus headings, about four times as much page text. Try it when spam is on-topic and well written. Save, then run the Calibration tool to compare."
 msgstr ""
 
-#: dist/spamlens/views/admin/app.php:13
 #: views/admin/app.php:13
 msgid "The SpamLens settings app is not built. Run npm install and npm run build in the plugin folder, or install the release zip."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12860
-#: public/app/settings.js:12877
+#: public/app/settings.js:12862
 msgid "Overview"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12868
-#: dist/spamlens/public/app/settings.js:13436
-#: dist/spamlens/public/app/settings.js:14310
-#: public/app/settings.js:12885
-#: public/app/settings.js:13452
-#: public/app/settings.js:14367
+#: public/app/settings.js:12870
+#: public/app/settings.js:13437
+#: public/app/settings.js:14352
 msgid "Calibration"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12887
-#: public/app/settings.js:12904
+#: public/app/settings.js:12889
 msgid "SpamLens sections"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12906
-#: public/app/settings.js:12923
+#: public/app/settings.js:12908
 msgid "Help"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12914
-#: dist/spamlens/public/app/settings.js:12999
-#: dist/spamlens/public/app/settings.js:13802
-#: public/app/settings.js:12931
-#: public/app/settings.js:13015
-#: public/app/settings.js:13855
+#: public/app/settings.js:12916
+#: public/app/settings.js:13000
+#: public/app/settings.js:13840
 msgid "(opens in a new tab)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12965
-#: public/app/settings.js:12981
+#: public/app/settings.js:12966
 msgid "Your data"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12972
-#: public/app/settings.js:12988
+#: public/app/settings.js:12973
 msgid "What is sent to the provider"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12987
-#: public/app/settings.js:13003
+#: public/app/settings.js:12988
 msgid "Need a hand?"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:12991
-#: public/app/settings.js:13007
+#: public/app/settings.js:12992
 msgid "Support forum"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13008
-#: public/app/settings.js:13024
+#: public/app/settings.js:13009
 msgid "A product by"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13335
-#: public/app/settings.js:13351
+#: public/app/settings.js:13336
 msgid "Loading…"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13347
-#: public/app/settings.js:13363
+#: public/app/settings.js:13348
 msgid "Spam protection for comments, reviews and Contact Form 7. Jev scores each submission; spam goes to the Spam folder, doubtful ones wait for moderation, and WordPress decides the rest."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13350
-#: public/app/settings.js:13366
+#: public/app/settings.js:13351
 msgid "DISABLE_WP_CRON is set. The automatic re-check of comments that could not be classified depends on WP-Cron; make sure a system cron job runs wp-cron.php."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13366
-#: public/app/settings.js:13382
+#: public/app/settings.js:13367
 msgid "Status"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13369
-#: public/app/settings.js:13385
+#: public/app/settings.js:13370
 msgid "Checking submissions"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13373
-#: public/app/settings.js:13389
+#: public/app/settings.js:13374
 msgid "Service problem"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13377
-#: public/app/settings.js:13393
+#: public/app/settings.js:13378
 msgid "Not set up"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13382
-#: dist/spamlens/public/app/settings.js:13838
-#: public/app/settings.js:13398
-#: public/app/settings.js:13892
+#: public/app/settings.js:13383
+#: public/app/settings.js:13877
 msgid "Provider"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13384
-#: dist/spamlens/public/app/settings.js:13862
-#: public/app/settings.js:13400
-#: public/app/settings.js:13916
+#: public/app/settings.js:13385
+#: public/app/settings.js:13901
 msgid "API key"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13384
-#: public/app/settings.js:13400
+#: public/app/settings.js:13385
 msgid "Defined in wp-config.php"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13385
-#: public/app/settings.js:13401
+#: public/app/settings.js:13386
 msgid "Checking"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13385
-#: public/app/settings.js:13401
+#: public/app/settings.js:13386
 msgid "Nothing: every integration is switched off."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13388
-#: public/app/settings.js:13404
+#: public/app/settings.js:13389
 msgid "SpamLens needs an API key before it can check comments. Pick the service that hosts Jev for you and paste a key from that service."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13392
-#: public/app/settings.js:13408
+#: public/app/settings.js:13393
 msgid "Add an API key"
 msgstr ""
 
 #. translators: 1: error label, e.g. "Authentication failed", 2: message from the provider
-#: dist/spamlens/public/app/settings.js:13401
-#: public/app/settings.js:13417
+#: public/app/settings.js:13402
 #, js-format
 msgid "Last request failed: %1$s — %2$s"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13410
-#: public/app/settings.js:13426
+#: public/app/settings.js:13411
 msgid "Next steps"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13418
-#: public/app/settings.js:13434
+#: public/app/settings.js:13419
 msgid "Pending comments"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13421
-#: public/app/settings.js:13437
+#: public/app/settings.js:13422
 msgid "Use Check for Spam to sweep the queue."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13439
-#: public/app/settings.js:13455
+#: public/app/settings.js:13440
 msgid "Compare Jev with your past moderation."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13457
-#: public/app/settings.js:13473
+#: public/app/settings.js:13458
 msgid "Provider, thresholds, privacy and integrations."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13470
-#: public/app/settings.js:13486
+#: public/app/settings.js:13471
 msgid "Marked as spam"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13471
-#: public/app/settings.js:13487
+#: public/app/settings.js:13472
 msgid "Held for moderation"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13472
-#: public/app/settings.js:13488
+#: public/app/settings.js:13473
 msgid "Errors (service unavailable)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13473
-#: public/app/settings.js:13489
+#: public/app/settings.js:13474
 msgid "False positives (un-spammed by a moderator)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13474
-#: public/app/settings.js:13490
+#: public/app/settings.js:13475
 msgid "Missed spam (spammed by a moderator)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13481
-#: public/app/settings.js:13497
+#: public/app/settings.js:13482
 msgid "Statistics were reset."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13486
-#: public/app/settings.js:13502
+#: public/app/settings.js:13487
 msgid "The statistics could not be reset."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13493
-#: public/app/settings.js:13509
+#: public/app/settings.js:13494
 msgid "Statistics"
 msgstr ""
 
 #. translators: %s: date
-#: dist/spamlens/public/app/settings.js:13499
-#: public/app/settings.js:13515
+#: public/app/settings.js:13500
 #, js-format
 msgid "Counting since %s."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13508
-#: public/app/settings.js:13524
+#: public/app/settings.js:13509
 msgid "Reset statistics"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13514
-#: public/app/settings.js:13530
+#: public/app/settings.js:13515
 msgid "Cancel"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13520
-#: public/app/settings.js:13536
+#: public/app/settings.js:13521
 msgid "Reset"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13536
-#: public/app/settings.js:13552
+#: public/app/settings.js:13537
 msgid "Counter"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13542
-#: public/app/settings.js:13558
+#: public/app/settings.js:13543
 msgid "Total"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13667
-#: public/app/settings.js:13683
+#: public/app/settings.js:13668
 msgid "Connect a provider, tune how submissions are judged, and choose what is sent and which forms are checked."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13705
-#: public/app/settings.js:13734
+#: public/app/settings.js:13685
+msgid "You have unsaved changes. Leave this screen and lose them?"
+msgstr ""
+
+#: public/app/settings.js:13719
 msgid "Settings saved."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13710
-#: public/app/settings.js:13739
+#: public/app/settings.js:13724
 msgid "The settings could not be saved."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13753
-#: public/app/settings.js:13782
+#: public/app/settings.js:13767
 msgid "Save changes"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13762
-#: public/app/settings.js:13791
+#: public/app/settings.js:13776
 msgid "Discard changes"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13767
-#: public/app/settings.js:13796
+#: public/app/settings.js:13781
 msgid "You have unsaved changes."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13767
-#: public/app/settings.js:13796
+#: public/app/settings.js:13781
 msgid "All changes saved."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13826
-#: dist/spamlens/public/app/settings.js:14414
-#: dist/spamlens/public/js/comments.js:28
-#: public/app/settings.js:13880
-#: public/app/settings.js:14471
+#: public/app/settings.js:13800
+msgid "The spam threshold must be a number from 0.5 to 1."
+msgstr ""
+
+#: public/app/settings.js:13803
+msgid "The hold threshold must be a number from 0.1 to 1."
+msgstr ""
+
+#: public/app/settings.js:13806
+msgid "The hold threshold cannot be higher than the spam threshold."
+msgstr ""
+
+#: public/app/settings.js:13809
+msgid "The timeout must be a whole number of seconds from 1 to 30."
+msgstr ""
+
+#: public/app/settings.js:13865
+#: public/app/settings.js:14456
 #: public/js/comments.js:72
 #: public/js/comments.js:129
 msgid "Request failed"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13834
-#: public/app/settings.js:13888
+#: public/app/settings.js:13873
 msgid "Connection"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13835
-#: public/app/settings.js:13889
+#: public/app/settings.js:13874
 msgid "Jev is a decision model by TypeSafe AI. Pick the service that hosts it for you and paste an API key from that service."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13844
-#: public/app/settings.js:13898
+#: public/app/settings.js:13883
 msgid "Get a key"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13848
-#: public/app/settings.js:13902
+#: public/app/settings.js:13887
 msgid "Free-tier model list"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13864
-#: public/app/settings.js:13918
+#: public/app/settings.js:13903
 msgid "Defined by the SPAMLENS_API_KEY constant in wp-config.php."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13864
-#: public/app/settings.js:13918
+#: public/app/settings.js:13903
 msgid "A key is stored. Leave the field empty to keep it, or paste a new one to replace it. You can also define SPAMLENS_API_KEY in wp-config.php."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13864
-#: public/app/settings.js:13918
+#: public/app/settings.js:13903
 msgid "You can also define SPAMLENS_API_KEY in wp-config.php."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13877
-#: public/app/settings.js:13931
+#: public/app/settings.js:13916
 msgid "The stored key will be removed"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13877
-#: public/app/settings.js:13931
+#: public/app/settings.js:13916
 msgid "Paste your API key"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13896
-#: public/app/settings.js:13950
+#: public/app/settings.js:13935
 msgid "Keep the key"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13896
-#: public/app/settings.js:13950
+#: public/app/settings.js:13935
 msgid "Remove key"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13907
-#: public/app/settings.js:13961
+#: public/app/settings.js:13946
 msgid "Endpoint URL"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13920
-#: public/app/settings.js:13974
+#: public/app/settings.js:13959
 msgid "Timeout"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13922
-#: public/app/settings.js:13976
+#: public/app/settings.js:13961
 msgid "Checks run while the visitor waits, so keep this short. Typical answers take 1–2 seconds."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13936
-#: public/app/settings.js:13990
+#: public/app/settings.js:13975
 msgid "seconds"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13941
-#: dist/spamlens/public/app/settings.js:13950
-#: public/app/settings.js:13995
-#: public/app/settings.js:14004
+#: public/app/settings.js:13980
+#: public/app/settings.js:13989
 msgid "Test connection"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13942
-#: public/app/settings.js:13996
+#: public/app/settings.js:13981
 msgid "Sends a canned spam comment using the values above (unsaved changes included) and shows the model version, latency and probability."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13950
-#: public/app/settings.js:14004
+#: public/app/settings.js:13989
 msgid "Testing…"
 msgstr ""
 
 #. translators: 1: model id, 2: latency in ms, 3: spam probability as a percentage, 4: category
-#: dist/spamlens/public/app/settings.js:13956
-#: public/app/settings.js:14010
+#: public/app/settings.js:13995
 #, js-format
 msgid "Connected. Model %1$s answered in %2$d ms and rated the sample %3$s spam (%4$s)."
 msgstr ""
 
 #. translators: %s: error message
-#: dist/spamlens/public/app/settings.js:13963
-#: public/app/settings.js:14017
+#: public/app/settings.js:14002
 #, js-format
 msgid "Failed: %s"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:13982
-#: public/app/settings.js:14036
+#: public/app/settings.js:14021
 msgid "The provider default always follows the newest release. Once your thresholds are calibrated, pin the versioned model shown by \"Test connection\" (for example jev-1.13.0) so a model upgrade cannot shift your scores. Versions that have answered on this site are listed here."
 msgstr ""
 
 #. translators: %s: model id, e.g. jev-latest
-#: dist/spamlens/public/app/settings.js:13999
-#: public/app/settings.js:14053
+#: public/app/settings.js:14038
 #, js-format
 msgid "Provider default (%s)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14001
-#: public/app/settings.js:14055
+#: public/app/settings.js:14040
 msgid "Provider default"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14004
-#: public/app/settings.js:14058
+#: public/app/settings.js:14043
 msgid "Pin a version"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14012
-#: public/app/settings.js:14066
+#: public/app/settings.js:14051
 msgid "Other model id…"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14022
-#: public/app/settings.js:14076
+#: public/app/settings.js:14061
 msgid "Model id"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14031
-#: public/app/settings.js:14085
+#: public/app/settings.js:14070
 msgid "Detection"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14032
-#: public/app/settings.js:14086
+#: public/app/settings.js:14071
 msgid "Each submission gets a spam probability from 0 to 1. Above the spam threshold it goes to the Spam folder; above the hold threshold it waits for moderation; below that WordPress decides as usual. Jev never approves anything on its own."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14035
-#: public/app/settings.js:14089
+#: public/app/settings.js:14074
 msgid "Spam threshold"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14037
-#: public/app/settings.js:14091
+#: public/app/settings.js:14076
 msgid "Probability at or above which a submission is marked as spam. 0.85 is a good default for English sites; raise it for other languages or after a calibration run shows false positives."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14050
-#: public/app/settings.js:14104
+#: public/app/settings.js:14089
 msgid "Hold threshold"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14052
-#: public/app/settings.js:14106
+#: public/app/settings.js:14091
 msgid "Comments between this and the spam threshold are held for moderation. Comments that look like spam but clearly respond to the page are held too. Contact-form entries have no queue and are delivered."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14064
-#: public/app/settings.js:14118
+#: public/app/settings.js:14103
 msgid "The hold threshold is above the spam threshold; it will be saved as the spam threshold."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14068
-#: public/app/settings.js:14122
+#: public/app/settings.js:14107
 msgid "Abusive comments"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14071
-#: public/app/settings.js:14125
+#: public/app/settings.js:14110
 msgid "Hold comments Jev rates as abusive, hateful, threatening or harassing, even when they are not spam"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14077
-#: public/app/settings.js:14131
+#: public/app/settings.js:14116
 msgid "When the service is unavailable"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14085
-#: public/app/settings.js:14139
+#: public/app/settings.js:14124
 msgid "Let WordPress decide as usual (recommended) — the comment is re-checked automatically within 20 minutes and moved to Spam if needed"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14092
-#: public/app/settings.js:14146
+#: public/app/settings.js:14131
 msgid "Hold the comment for moderation"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14096
-#: public/app/settings.js:14150
+#: public/app/settings.js:14135
 msgid "About this site"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14098
-#: public/app/settings.js:14152
+#: public/app/settings.js:14137
 msgid "Sent with every check. Describe what the site is about, who comments, and which languages are expected — this helps Jev most on non-English sites."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14104
-#: public/app/settings.js:14158
+#: public/app/settings.js:14143
 msgid "e.g. A German-language cooking blog for home cooks; readers often share links to their own recipes; product reviews are in English."
 msgstr ""
 
 #. translators: 1: characters used, 2: maximum
-#: dist/spamlens/public/app/settings.js:14110
-#: public/app/settings.js:14164
+#: public/app/settings.js:14149
 #, js-format
 msgid "%1$d of %2$d characters"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14117
-#: public/app/settings.js:14171
+#: public/app/settings.js:14156
 msgid "Page context"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14119
-#: public/app/settings.js:14173
+#: public/app/settings.js:14158
 msgid "The text of password-protected, private and unpublished pages is never sent at any level; the parent comment of a reply always is. Developers can adjust or blank the page context with the spamlens_post_context filter."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14134
-#: public/app/settings.js:14188
+#: public/app/settings.js:14173
 msgid "Skip checks for"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14136
-#: public/app/settings.js:14190
+#: public/app/settings.js:14175
 msgid "Comments matching the Disallowed Comment Keys list and comments already flagged by another spam plugin are never sent."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14139
-#: public/app/settings.js:14193
+#: public/app/settings.js:14178
 msgid "Users who can moderate comments"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14144
-#: public/app/settings.js:14198
+#: public/app/settings.js:14183
 msgid "Authors with a previously approved comment"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14149
-#: public/app/settings.js:14203
+#: public/app/settings.js:14188
 msgid "Do check pingbacks and trackbacks"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14161
-#: public/app/settings.js:14215
+#: public/app/settings.js:14200
 msgid "Privacy"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14162
-#: public/app/settings.js:14216
+#: public/app/settings.js:14201
 msgid "Every check sends the submission text, the author name and website, and details of the page it belongs to (title, type, tags and categories and, depending on the Page context setting, an excerpt and headings; for replies, the parent comment) to the selected provider. Nothing else is stored from the response except the probabilities."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14164
-#: public/app/settings.js:14218
+#: public/app/settings.js:14203
 msgid "Also send"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14168
-#: public/app/settings.js:14222
+#: public/app/settings.js:14207
 msgid "Author email address (helps with repeat offenders)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14173
-#: public/app/settings.js:14227
+#: public/app/settings.js:14212
 msgid "IP address"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14178
-#: public/app/settings.js:14232
+#: public/app/settings.js:14217
 msgid "Browser user agent and referer (strong bot signal)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14184
-#: public/app/settings.js:14238
+#: public/app/settings.js:14223
 msgid "Comment form notice"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14187
-#: public/app/settings.js:14241
+#: public/app/settings.js:14226
 msgid "Suggested privacy-policy wording is available in the Policy Guide."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14191
-#: public/app/settings.js:14245
+#: public/app/settings.js:14230
 msgid "Open the Policy Guide"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14195
-#: public/app/settings.js:14249
+#: public/app/settings.js:14234
 msgid "Show \"This site uses Jev by TypeSafe AI to reduce spam\" under the comment form, linking to your privacy policy"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14205
-#: public/app/settings.js:14259
+#: public/app/settings.js:14244
 msgid "Integrations"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14206
-#: public/app/settings.js:14260
+#: public/app/settings.js:14245
 msgid "Choose which submissions Jev checks. A plugin that is not installed keeps its setting for when it comes back."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14208
-#: public/app/settings.js:14262
+#: public/app/settings.js:14247
 msgid "Check submissions from"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14219
-#: public/app/settings.js:14273
+#: public/app/settings.js:14258
 msgid "(not installed)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14311
-#: public/app/settings.js:14368
+#: public/app/settings.js:14353
 msgid "Runs Jev on a sample of comments you already moderated (newest Spam and Approved comments, excluding those written by moderators) and compares the results with your decisions at the thresholds saved in Settings. Read-only: no comment is changed and nothing is stored."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14316
-#: public/app/settings.js:14373
+#: public/app/settings.js:14358
 msgid "Save an API key first."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14346
-#: public/app/settings.js:14403
+#: public/app/settings.js:14388
 msgid "Collecting sample…"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14360
-#: public/app/settings.js:14417
+#: public/app/settings.js:14402
 msgid "Not enough comments: the calibration needs at least a few comments in both the Spam and Approved lists."
 msgstr ""
 
 #. translators: 1: number classified, 2: total
-#: dist/spamlens/public/app/settings.js:14375
-#: public/app/settings.js:14432
+#: public/app/settings.js:14417
 #, js-format
 msgid "%1$d of %2$d comments classified"
 msgstr ""
 
 #. translators: %d: seconds
-#: dist/spamlens/public/app/settings.js:14386
-#: dist/spamlens/public/js/comments.js:94
-#: public/app/settings.js:14443
+#: public/app/settings.js:14428
 #: public/js/comments.js:103
 #, js-format
 msgid "Provider rate limit — pausing for %d s…"
 msgstr ""
 
 #. translators: %s: error message
-#: dist/spamlens/public/app/settings.js:14396
-#: dist/spamlens/public/app/settings.js:14413
-#: dist/spamlens/public/js/comments.js:62
-#: dist/spamlens/public/js/comments.js:86
-#: dist/spamlens/public/js/comments.js:119
-#: public/app/settings.js:14453
-#: public/app/settings.js:14470
+#: public/app/settings.js:14438
+#: public/app/settings.js:14455
 #: public/js/comments.js:71
 #: public/js/comments.js:95
 #: public/js/comments.js:128
@@ -1254,206 +1014,151 @@ msgstr ""
 msgid "Error: %s"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14421
-#: public/app/settings.js:14478
+#: public/app/settings.js:14463
 msgid "Run a calibration"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14431
-#: public/app/settings.js:14488
+#: public/app/settings.js:14473
 msgid "Sample size per class"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14452
-#: public/app/settings.js:14509
+#: public/app/settings.js:14494
 msgid "Run calibration"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14457
-#: public/app/settings.js:14514
+#: public/app/settings.js:14499
 msgid "Each comment in the sample is one request to your provider. On a rate-limited free tier the run pauses and resumes by itself."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14465
-#: public/app/settings.js:14522
+#: public/app/settings.js:14507
 msgid "Calibration progress"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14484
-#: dist/spamlens/public/app/settings.js:14586
-#: public/app/settings.js:14541
-#: public/app/settings.js:14643
+#: public/app/settings.js:14526
+#: public/app/settings.js:14628
 msgid "Spam"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14484
-#: public/app/settings.js:14541
+#: public/app/settings.js:14526
 msgid "Hold"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14484
-#: public/app/settings.js:14541
+#: public/app/settings.js:14526
 msgid "Allow"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14489
-#: public/app/settings.js:14546
+#: public/app/settings.js:14531
 msgid "Results"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14495
-#: public/app/settings.js:14552
+#: public/app/settings.js:14537
 msgid "Accuracy"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14496
-#: public/app/settings.js:14553
+#: public/app/settings.js:14538
 msgid "False positives (approved comments that would be marked spam)"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14497
-#: public/app/settings.js:14554
+#: public/app/settings.js:14539
 msgid "Approved comments that would be held"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14498
-#: public/app/settings.js:14555
+#: public/app/settings.js:14540
 msgid "Spam caught"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14499
-#: public/app/settings.js:14556
+#: public/app/settings.js:14541
 msgid "Spam that would be held for moderation"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14500
-#: public/app/settings.js:14557
+#: public/app/settings.js:14542
 msgid "Missed spam (spam that would be allowed)"
 msgstr ""
 
 #. translators: 1: spam threshold, 2: hold threshold, 3: false positives, 4: spam caught, 5: total spam
-#: dist/spamlens/public/app/settings.js:14514
-#: public/app/settings.js:14571
+#: public/app/settings.js:14556
 #, js-format
 msgid "On this sample, a spam threshold of %1$s and a hold threshold of %2$s would give %3$d false positives and catch %4$d of %5$d spam."
 msgstr ""
 
 #. translators: %s: model id
-#: dist/spamlens/public/app/settings.js:14527
-#: public/app/settings.js:14584
+#: public/app/settings.js:14569
 #, js-format
 msgid "Model: %s"
 msgstr ""
 
 #. translators: %s: page context level, e.g. "Standard"
-#: dist/spamlens/public/app/settings.js:14532
-#: public/app/settings.js:14589
+#: public/app/settings.js:14574
 #, js-format
 msgid "Page context: %s"
 msgstr ""
 
 #. translators: %d: number of comments
-#: dist/spamlens/public/app/settings.js:14537
-#: public/app/settings.js:14594
+#: public/app/settings.js:14579
 #, js-format
 msgid "%d comments could not be classified."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14543
-#: public/app/settings.js:14600
+#: public/app/settings.js:14585
 msgid "Where Jev disagreed"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14547
-#: public/app/settings.js:14604
+#: public/app/settings.js:14589
 msgid "This reflects past comments only; nothing was changed. Comments Jev scored differently from your moderation:"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14558
-#: public/app/settings.js:14615
+#: public/app/settings.js:14600
 msgid "Comment"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14563
-#: public/app/settings.js:14620
+#: public/app/settings.js:14605
 msgid "Your moderation"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14586
-#: public/app/settings.js:14643
+#: public/app/settings.js:14628
 msgid "Approved"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14600
-#: public/app/settings.js:14657
+#: public/app/settings.js:14642
 msgid "Jev agreed with every moderated comment in the sample."
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14613
-#: public/app/settings.js:14670
+#: public/app/settings.js:14655
 msgid "SpamLens settings"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14614
-#: public/app/settings.js:14671
+#: public/app/settings.js:14656
 msgid "SpamLens calibration"
 msgstr ""
 
-#: dist/spamlens/public/app/settings.js:14619
-#: public/app/settings.js:14676
+#: public/app/settings.js:14661
 msgid "The settings could not be loaded. Reload the page to try again."
 msgstr ""
 
-#: dist/spamlens/public/js/comments.js:45
 #: public/js/comments.js:54
 msgid "Re-checking…"
 msgstr ""
 
-#: dist/spamlens/public/js/comments.js:55
 #: public/js/comments.js:64
 msgid "Moved to Spam"
 msgstr ""
 
-#: dist/spamlens/public/js/comments.js:71
 #: public/js/comments.js:80
 msgid "Checking pending comments…"
 msgstr ""
 
-#: dist/spamlens/public/js/comments.js:100
 #: public/js/comments.js:109
 msgid "No pending comments to check."
 msgstr ""
 
 #. translators: 1: number checked, 2: number moved to spam
-#: dist/spamlens/public/js/comments.js:102
 #: public/js/comments.js:111
 #, js-format
 msgid "Done: %1$d checked, %2$d moved to Spam. Reload to see the changes."
 msgstr ""
 
 #. translators: 1: number checked, 2: total, 3: number moved to spam
-#: dist/spamlens/public/js/comments.js:110
 #: public/js/comments.js:119
 #, js-format
 msgid "%1$d of %2$d checked, %3$d moved to Spam"
-msgstr ""
-
-#: public/app/settings.js:13700
-msgid "You have unsaved changes. Leave this screen and lose them?"
-msgstr ""
-
-#: public/app/settings.js:13815
-msgid "The spam threshold must be a number from 0.5 to 1."
-msgstr ""
-
-#: public/app/settings.js:13818
-msgid "The hold threshold must be a number from 0.1 to 1."
-msgstr ""
-
-#: public/app/settings.js:13821
-msgid "The hold threshold cannot be higher than the spam threshold."
-msgstr ""
-
-#: public/app/settings.js:13824
-msgid "The timeout must be a whole number of seconds from 1 to 30."
 msgstr ""
