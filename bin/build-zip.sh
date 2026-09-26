@@ -25,7 +25,7 @@ rm -rf "dist/$SLUG" "dist/$SLUG-$VERSION.zip"
 mkdir -p "dist/$SLUG"
 rsync -a --exclude-from=.distignore ./ "dist/$SLUG/"
 
-for f in "$SLUG.php" uninstall.php readme.txt LICENSE packages/autoload.php public/app/settings.js public/app/settings.css public/js/comments.js public/css/comments.css resources/assets/veronalabs.svg; do
+for f in "$SLUG.php" uninstall.php readme.txt LICENSE packages/autoload.php public/app/settings.js public/app/settings.css public/js/comments.js public/css/comments.css resources/assets/veronalabs.svg resources/assets/logo-dark.png; do
 	test -s "dist/$SLUG/$f" || { echo "The zip would miss $f" >&2; exit 1; }
 done
 

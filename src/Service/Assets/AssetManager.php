@@ -84,6 +84,7 @@ class AssetManager {
 			'cronDisabled' => defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON,
 			'logos'        => array(
 				'veronalabs' => self::svg( 'veronalabs.svg' ),
+				'logo'       => SPAMLENS_URL . 'resources/assets/logo-dark.png',
 			),
 			'initial'      => $rest ? array(
 				'settings' => $rest->settings_payload(),

@@ -13,7 +13,7 @@ export type AdminSettings = {
     support: string;
   };
   cronDisabled: boolean;
-  logos: { veronalabs: string };
+  logos: { veronalabs: string; logo: string };
   initial: null | { settings: SettingsPayload; stats: StatsPayload };
 };
 

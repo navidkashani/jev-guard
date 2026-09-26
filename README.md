@@ -1,5 +1,7 @@
 # SpamLens
 
+![SpamLens](.wordpress-org/banner-1544x500.png)
+
 Spam protection for WordPress comments, product reviews, pingbacks and Contact Form 7, using the Jev decision model.
 
 [![CI](https://github.com/veronalabs/spamlens/actions/workflows/tests.yml/badge.svg)](https://github.com/veronalabs/spamlens/actions/workflows/tests.yml)
