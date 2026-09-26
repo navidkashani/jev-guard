@@ -1,7 +1,7 @@
 # Normalise line endings.
 * text=auto eol=lf
 
-# Keep development files out of `git archive` (release zips).
+# Keep development files out of `git archive`. The release zip is built by bin/build-zip.sh (see .distignore).
 /.github            export-ignore
 /.distignore        export-ignore
 /.editorconfig      export-ignore
@@ -10,10 +10,6 @@
 /.wp-env.json       export-ignore
 /bin                export-ignore
 /tests              export-ignore
-/composer.json      export-ignore
-/composer.lock      export-ignore
-/package.json       export-ignore
-/package-lock.json  export-ignore
 /phpcs.xml.dist     export-ignore
 /phpunit.xml.dist   export-ignore
 /README.md          export-ignore

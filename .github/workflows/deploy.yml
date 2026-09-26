@@ -1,0 +1,70 @@
+name: Deploy
+
+# Publishing a GitHub release tagged v<version> runs the full test suite on that commit and, only when it is green,
+# builds the zip, attaches it to the release and pushes the version to the WordPress.org directory over SVN.
+# Until WordPress.org has approved the plugin there is no SVN repository, so the SVN step is skipped while the
+# SVN_USERNAME variable is unset; the release still gets the zip to submit by hand.
+# The job runs in the `wordpress-org` environment (only v* tags may deploy), which holds the variable SVN_USERNAME
+# and the secret SVN_PASSWORD of the WordPress.org account that commits to the plugin.
+on:
+  release:
+    types: [published]
+
+concurrency:
+  group: deploy-wordpress-org
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Tests before deploy
+    uses: ./.github/workflows/tests.yml
+
+  deploy:
+    name: Build and deploy
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: wordpress-org
+      url: https://wordpress.org/plugins/spamlens/
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - name: Release tag matches the plugin version
+        id: version
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          V=$(grep -oE 'Version:[[:space:]]+[0-9.]+' spamlens.php | awk '{print $2}')
+          test "v$V" = "$TAG" || { echo "Release $TAG but the plugin is $V"; exit 1; }
+          echo "value=$V" >> "$GITHUB_OUTPUT"
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Build the zip
+        run: bash bin/build-zip.sh
+      - name: Is WordPress.org set up for this plugin yet?
+        id: wporg
+        env:
+          SVN_USERNAME: ${{ vars.SVN_USERNAME }}
+        run: echo "ready=${SVN_USERNAME:+yes}" >> "$GITHUB_OUTPUT"
+      - name: Deploy to WordPress.org
+        if: steps.wporg.outputs.ready == 'yes'
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ vars.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: spamlens
+          BUILD_DIR: dist/spamlens
+          ASSETS_DIR: .wordpress-org
+      - name: Attach the zip to the release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/spamlens-${{ steps.version.outputs.value }}.zip

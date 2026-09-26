@@ -2,20 +2,20 @@
 /**
  * Comments integration tests.
  *
- * @package JevGuard
+ * @package SpamLens
  */
 
-use JevGuard\Integrations\Comments;
-use JevGuard\Settings;
-use JevGuard\Stats;
+use SpamLens\Service\Integrations\Comments;
+use SpamLens\Service\Settings\Settings;
+use SpamLens\Service\Stats\Stats;
 
 /**
  * End-to-end through `wp_new_comment()`, REST, rechecks, retry cron and moderator feedback.
  */
-class CommentsTest extends JevGuard_TestCase {
+class CommentsTest extends SpamLens_TestCase {
 
 	public function test_high_probability_comment_goes_to_spam_with_meta_and_history() {
-		JevGuard_HttpStub::queue_answers( 0.95, 0.05, 0.0, 'seo_link_spam' );
+		SpamLens_HttpStub::queue_answers( 0.95, 0.05, 0.0, 'seo_link_spam' );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 
 		$this->assertIsInt( $id );
@@ -37,7 +37,7 @@ class CommentsTest extends JevGuard_TestCase {
 	}
 
 	public function test_borderline_comment_is_held() {
-		JevGuard_HttpStub::queue_answers( 0.6, 0.4 );
+		SpamLens_HttpStub::queue_answers( 0.6, 0.4 );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '0', get_comment( $id )->comment_approved );
 		$this->assertSame( array( 'check-hold' ), $this->history_events( $id ) );
@@ -45,20 +45,20 @@ class CommentsTest extends JevGuard_TestCase {
 	}
 
 	public function test_low_probability_comment_keeps_site_default() {
-		JevGuard_HttpStub::queue_answers( 0.1, 0.9, 0.0, 'legitimate' );
+		SpamLens_HttpStub::queue_answers( 0.1, 0.9, 0.0, 'legitimate' );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '1', get_comment( $id )->comment_approved );
 		$this->assertSame( array( 'check-ham' ), $this->history_events( $id ) );
 
 		// With moderation on, "allow" still means WordPress decides.
 		update_option( 'comment_moderation', '1' );
-		JevGuard_HttpStub::queue_answers( 0.1, 0.9, 0.0, 'legitimate' );
+		SpamLens_HttpStub::queue_answers( 0.1, 0.9, 0.0, 'legitimate' );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '0', get_comment( $id )->comment_approved );
 	}
 
 	public function test_api_error_fails_open_and_schedules_retry() {
-		JevGuard_HttpStub::queue_error();
+		SpamLens_HttpStub::queue_error();
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 
 		$this->assertSame( '1', get_comment( $id )->comment_approved );
@@ -71,8 +71,8 @@ class CommentsTest extends JevGuard_TestCase {
 
 	public function test_api_error_can_hold_instead() {
 		Settings::update( array( 'on_error' => 'hold' ) );
-		JevGuard_HttpStub::queue( 529, '' );
-		JevGuard_HttpStub::queue( 529, '' );
+		SpamLens_HttpStub::queue( 529, '' );
+		SpamLens_HttpStub::queue( 529, '' );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '0', get_comment( $id )->comment_approved );
 	}
@@ -81,7 +81,7 @@ class CommentsTest extends JevGuard_TestCase {
 		update_option( 'disallowed_keys', 'viagra' );
 		$id = wp_new_comment( wp_slash( $this->comment_data( array( 'comment_content' => 'buy viagra now' ) ) ), true );
 		$this->assertSame( 'trash', get_comment( $id )->comment_approved );
-		$this->assertCount( 0, JevGuard_HttpStub::$requests );
+		$this->assertCount( 0, SpamLens_HttpStub::$requests );
 		$this->assertSame( array( 'skipped-disallowed' ), $this->history_events( $id ) );
 	}
 
@@ -93,7 +93,7 @@ class CommentsTest extends JevGuard_TestCase {
 		$id = wp_new_comment( wp_slash( $this->comment_data( array( 'akismet_result' => 'true' ) ) ), true );
 		$this->assertSame( array( 'skipped-already_flagged' ), $this->history_events( $id ) );
 
-		$this->assertCount( 0, JevGuard_HttpStub::$requests );
+		$this->assertCount( 0, SpamLens_HttpStub::$requests );
 
 		$data = $this->comment_data( array( 'comment_content' => '   ' ) );
 		$this->assertSame( 'empty', $this->comments()->skip_reason( $data ) );
@@ -126,12 +126,12 @@ class CommentsTest extends JevGuard_TestCase {
 		Settings::update( array( 'integrations' => array( 'comments' => false, 'cf7' => true ) ) );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '', get_comment_meta( $id, Comments::META, true ) );
-		$this->assertCount( 0, JevGuard_HttpStub::$requests );
+		$this->assertCount( 0, SpamLens_HttpStub::$requests );
 
 		Settings::update( array( 'integrations' => array( 'comments' => true, 'cf7' => true ), 'api_key' => '' ) );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '', get_comment_meta( $id, Comments::META, true ) );
-		$this->assertCount( 0, JevGuard_HttpStub::$requests );
+		$this->assertCount( 0, SpamLens_HttpStub::$requests );
 	}
 
 	public function test_rest_path_sets_status_and_meta() {
@@ -139,7 +139,7 @@ class CommentsTest extends JevGuard_TestCase {
 		wp_set_current_user( $user );
 		$post_id = self::factory()->post->create();
 
-		JevGuard_HttpStub::queue_answers( 0.97, 0.02, 0.0, 'scam_or_phishing' );
+		SpamLens_HttpStub::queue_answers( 0.97, 0.02, 0.0, 'scam_or_phishing' );
 		$request = new WP_REST_Request( 'POST', '/wp/v2/comments' );
 		$request->set_param( 'post', $post_id );
 		$request->set_param( 'content', 'Claim your prize at http://prize.example.com/' );
@@ -156,16 +156,16 @@ class CommentsTest extends JevGuard_TestCase {
 	}
 
 	public function test_recheck_moves_to_spam_only_when_new_verdict_is_spam() {
-		JevGuard_HttpStub::queue_answers( 0.1, 0.9, 0.0, 'legitimate' );
+		SpamLens_HttpStub::queue_answers( 0.1, 0.9, 0.0, 'legitimate' );
 		$id = wp_new_comment( wp_slash( $this->comment_data() ), true );
 		$this->assertSame( '1', get_comment( $id )->comment_approved );
 
-		JevGuard_HttpStub::queue_answers( 0.6, 0.5 );
+		SpamLens_HttpStub::queue_answers( 0.6, 0.5 );
 		$verdict = $this->comments()->recheck( $id, 'recheck' );
 		$this->assertSame( 'hold', $verdict->decision );
 		$this->assertSame( '1', get_comment( $id )->comment_approved, 'hold on recheck must not change status' );
 
-		JevGuard_HttpStub::queue_answers( 0.95, 0.05 );
+		SpamLens_HttpStub::queue_answers( 0.95, 0.05 );
 		$verdict = $this->comments()->recheck( $id, 'recheck' );
 		$this->assertSame( 'spam', $verdict->decision );
 		$this->assertSame( 'spam', get_comment( $id )->comment_approved );
@@ -179,7 +179,7 @@ class CommentsTest extends JevGuard_TestCase {
 		$id = self::factory()->comment->create( array( 'comment_approved' => 1 ) );
 		update_comment_meta( $id, Comments::META_ERROR, 1000 );
 
-		JevGuard_HttpStub::queue_error();
+		SpamLens_HttpStub::queue_error();
 		$result = $this->comments()->recheck( $id, 'recheck' );
 		$this->assertWPError( $result );
 		$this->assertSame( '1000', (string) get_comment_meta( $id, Comments::META_ERROR, true ) );
@@ -197,8 +197,8 @@ class CommentsTest extends JevGuard_TestCase {
 		update_comment_meta( $spammed, Comments::META_ERROR, time() - 10 );
 		update_comment_meta( $stale, Comments::META_ERROR, time() - 20 * DAY_IN_SECONDS );
 
-		JevGuard_HttpStub::queue_answers( 0.95, 0.05 ); // $approved (oldest error first)
-		JevGuard_HttpStub::queue_answers( 0.3, 0.7, 0.0, 'legitimate' ); // $held
+		SpamLens_HttpStub::queue_answers( 0.95, 0.05 ); // $approved (oldest error first)
+		SpamLens_HttpStub::queue_answers( 0.3, 0.7, 0.0, 'legitimate' ); // $held
 
 		$this->comments()->run_retry_queue();
 
@@ -212,7 +212,7 @@ class CommentsTest extends JevGuard_TestCase {
 
 		$this->assertSame( '', get_comment_meta( $spammed, Comments::META_ERROR, true ), 'spam rows are dropped without a request' );
 		$this->assertSame( '', get_comment_meta( $stale, Comments::META_ERROR, true ), 'stale rows are dropped' );
-		$this->assertCount( 2, JevGuard_HttpStub::$requests );
+		$this->assertCount( 2, SpamLens_HttpStub::$requests );
 		$this->assertFalse( wp_next_scheduled( Comments::CRON_HOOK ) );
 	}
 
@@ -222,10 +222,10 @@ class CommentsTest extends JevGuard_TestCase {
 		update_comment_meta( $a, Comments::META_ERROR, time() - 100 );
 		update_comment_meta( $b, Comments::META_ERROR, time() - 50 );
 
-		JevGuard_HttpStub::queue( 401, array( 'message' => 'bad key' ) );
+		SpamLens_HttpStub::queue( 401, array( 'message' => 'bad key' ) );
 		$this->comments()->run_retry_queue();
 
-		$this->assertCount( 1, JevGuard_HttpStub::$requests );
+		$this->assertCount( 1, SpamLens_HttpStub::$requests );
 		$this->assertNotEmpty( get_comment_meta( $a, Comments::META_ERROR, true ) );
 		$this->assertNotEmpty( get_comment_meta( $b, Comments::META_ERROR, true ) );
 		$this->assertNotFalse( wp_next_scheduled( Comments::CRON_HOOK ) );
@@ -263,7 +263,7 @@ class CommentsTest extends JevGuard_TestCase {
 
 	public function test_classify_only_writes_nothing() {
 		$id = self::factory()->comment->create( array( 'comment_approved' => 1 ) );
-		JevGuard_HttpStub::queue_answers( 0.99, 0.01 );
+		SpamLens_HttpStub::queue_answers( 0.99, 0.01 );
 		$verdict = $this->comments()->classify_only( $id );
 
 		$this->assertSame( 'spam', $verdict->decision );
@@ -287,7 +287,7 @@ class CommentsTest extends JevGuard_TestCase {
 	}
 
 	public function test_duplicate_submission_hits_cache_before_wordpress_rejects_it() {
-		JevGuard_HttpStub::queue_answers( 0.95, 0.05 );
+		SpamLens_HttpStub::queue_answers( 0.95, 0.05 );
 		$data = $this->comment_data( array( 'comment_content' => 'Same spam twice http://x.example.com/' ) );
 		$first = wp_new_comment( wp_slash( $data ), true );
 		$this->assertIsInt( $first );
@@ -296,6 +296,6 @@ class CommentsTest extends JevGuard_TestCase {
 		$second = wp_new_comment( wp_slash( $data ), true );
 		$this->assertWPError( $second );
 		$this->assertSame( 'comment_duplicate', $second->get_error_code() );
-		$this->assertCount( 1, JevGuard_HttpStub::$requests );
+		$this->assertCount( 1, SpamLens_HttpStub::$requests );
 	}
 }

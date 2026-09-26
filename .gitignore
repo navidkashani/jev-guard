@@ -1,9 +1,12 @@
 /vendor/
 /node_modules/
+/packages/
+/public/
 /.phpunit.result.cache
 /.phpunit.cache/
 /.wp-env.override.json
 /build/
+/dist/
 /*.zip
 .DS_Store
 Thumbs.db

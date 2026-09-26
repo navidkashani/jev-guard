@@ -1,0 +1,153 @@
+/*
+ * The settings app's stylesheet: Tailwind 4 with the design tokens shared by the VeronaLabs admin apps (MonoRanks,
+ * WConvert). Everything is scoped under #spamlens-admin and body.spamlens-screen, so WordPress's own admin keeps its
+ * styling and nothing here reaches another screen. Logical properties keep right-to-left admins mirrored.
+ */
+/* Tailwind's theme and utilities only. Its page-wide reset (preflight) is left out because it would restyle the whole
+   admin page (menu, toolbar, other plugins' notices); the few reset rules the app relies on are below, scoped. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities) important;
+
+@custom-variant dark (&:is([data-theme="dark"] *, [data-theme="dark"]));
+
+@source "./";
+@source "../../entries";
+
+/* The parts of preflight the app needs, inside the app only. */
+#spamlens-admin *, #spamlens-admin ::before, #spamlens-admin ::after { box-sizing: border-box; border: 0 solid; }
+#spamlens-admin svg, #spamlens-admin img { display: block; vertical-align: middle; }
+#spamlens-admin ul, #spamlens-admin ol { list-style: none; margin: 0; padding: 0; }
+#spamlens-admin table { border-collapse: collapse; }
+#spamlens-admin button { background-color: transparent; font: inherit; color: inherit; }
+
+#spamlens-admin, body.spamlens-screen {
+  --page: #f5f6f8; --surface: #ffffff; --surface2: #f1f3f6; --surface3: #e9ecf1; --ink: #14181f; --ink2: #4c5563; --muted: #8a929e;
+  --grid: #e6e9ee; --line: #cbd2db; --border: #e3e7ec; --accent: #2a6fdb; --accentInk: #1d5bbf; --accentSoft: #e8f0fc;
+  --good: #0ca30c; --goodInk: #0a7a0a; --warn: #e6a100; --critical: #d03b3b; --grayTrack: #e6e9ee; --primaryBtn: #14181f; --primaryBtnInk: #ffffff;
+  --band: #14181f; --bandInk: #f3f4f6; --bandMuted: #b8bec8; --bandEdge: #2c313a;
+  --tintGood: rgba(12, 163, 12, .07); --tintGoodEdge: rgba(12, 163, 12, .35);
+  --tintWarn: rgba(230, 161, 0, .10); --tintWarnEdge: rgba(230, 161, 0, .40);
+  --tintBad: rgba(208, 59, 59, .07); --tintBadEdge: rgba(208, 59, 59, .35);
+  /* shadcn's names, the app's values, so vendored components drop in unchanged. */
+  --background: var(--page); --foreground: var(--ink); --card: var(--surface); --card-foreground: var(--ink);
+  --popover: var(--surface); --popover-foreground: var(--ink); --primary: var(--primaryBtn); --primary-foreground: var(--primaryBtnInk);
+  --secondary: var(--surface2); --secondary-foreground: var(--ink); --muted-token: var(--surface2); --muted-foreground: var(--muted);
+  --accent-token: var(--surface2); --accent-foreground: var(--ink); --destructive: var(--critical); --input: var(--line); --ring: var(--accent);
+  --radius: 0.5rem;
+}
+#spamlens-admin[data-theme="dark"] {
+  --page: #0f1115; --surface: #171a20; --surface2: #1e2229; --surface3: #262b33; --ink: #f3f4f6; --ink2: #b8bec8; --muted: #7d8590;
+  --grid: #262b33; --line: #3a404a; --border: #262b33; --accent: #3987e5; --accentInk: #86b6ef; --accentSoft: #1a2a44;
+  --good: #0ca30c; --goodInk: #3ccf3c; --warn: #fab219; --critical: #e05656; --grayTrack: #2c313a; --primaryBtn: #f3f4f6; --primaryBtnInk: #14181f;
+  --band: #0b0d11; --bandEdge: #262b33;
+  --tintGood: rgba(60, 207, 60, .12); --tintGoodEdge: rgba(60, 207, 60, .38);
+  --tintWarn: rgba(250, 178, 25, .14); --tintWarnEdge: rgba(250, 178, 25, .42);
+  --tintBad: rgba(224, 86, 86, .12); --tintBadEdge: rgba(224, 86, 86, .38);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted-token);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-token);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  /* The app's own names. */
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-surface3: var(--surface3);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-mute: var(--muted);
+  --color-grid: var(--grid);
+  --color-line: var(--line);
+  --color-brand: var(--accent);
+  --color-brand-ink: var(--accentInk);
+  --color-brand-soft: var(--accentSoft);
+  --color-good: var(--good);
+  --color-good-ink: var(--goodInk);
+  --color-warn: var(--warn);
+  --color-critical: var(--critical);
+  --color-track: var(--grayTrack);
+  --color-band: var(--band);
+  --color-band-ink: var(--bandInk);
+  --color-band-muted: var(--bandMuted);
+  --color-band-edge: var(--bandEdge);
+  --radius-sm: 5px; --radius-md: 7px; --radius-lg: 8px; --radius-xl: 12px;
+  --shadow-sm: none; --shadow-md: none; --shadow-lg: none;
+  --text-xs: 11px; --text-sm: 12px; --text-base: 13px; --text-lg: 15px; --text-xl: 22px; --text-2xl: 26px;
+}
+
+/* The mount takes the admin content area edge to edge: WordPress's .wrap margins and footer reservation are taken back. */
+body.spamlens-screen #wpbody-content { padding-bottom: 0; }
+body.spamlens-screen #wpfooter { display: none; }
+/* The frame fills the admin's content area, so its own footer is the last band on the page with no grey strip under it.
+   WordPress's #wpwrap is taller than the viewport by the toolbar's height, which is where the strip came from. The
+   content area is a column: whatever WordPress prints above the frame (its update notices) keeps its height, and the
+   frame takes the rest. */
+body.spamlens-screen #wpwrap { min-height: 0; }
+/* On a site with a long admin menu the menu is taller than the page. The frame then stopped short and WordPress's grey
+   showed under the footer, so the content area is at least as tall as the menu (--sl-fill, measured in lib/fill.ts) and
+   carries the page's own colour until the app has measured it. */
+body.spamlens-screen #wpwrap, body.spamlens-screen #wpcontent, body.spamlens-screen #wpbody, body.spamlens-screen #wpbody-content { background: var(--page); }
+body.spamlens-screen #wpbody-content { display: flex; flex-direction: column; min-height: max(calc(100vh - var(--wp-admin--admin-bar--height, 32px)), var(--sl-fill, 0px)); }
+/* WordPress wraps the screen in a .wrap div; it passes the height on so the frame inside it can take the rest. */
+body.spamlens-screen #wpbody-content > .wrap { display: flex; flex-direction: column; flex: 1 0 auto; margin: 0; padding: 0; min-height: 0; }
+/* WordPress's own notices are moved into the page (shell/Notices.tsx) and take the app's look there. One that has not
+   been moved yet stays hidden for the moment rather than flashing above the band. */
+body.spamlens-screen #wpbody-content > :is(.notice, .update-nag, .updated, .error, #message) { display: none; }
+/* Notices that landed in the page: WordPress's relocation puts some before .wp-header-end, the rest are collected in
+   the slot under it. Both read as the app's cards. */
+#spamlens-admin :is(.notice, .update-nag, .updated, .error, #message) {
+	width: 100%; margin: 0; padding: 12px 16px; border: 1px solid var(--border); border-radius: 12px;
+	background: var(--surface); color: var(--ink); box-shadow: none; font-size: 13px; line-height: 1.45; display: block;
+}
+#spamlens-admin > :is(.notice, .updated, .error, #message) { max-width: 1180px; margin: 0 auto 4px; }
+/* The tone is a translucent tint over the card's own surface, so it reads the same in both themes. The tint is forced:
+   WordPress's own admin stylesheets, loaded after this one, set a background on .notice and would win otherwise. */
+#spamlens-admin div.notice-success { background-image: linear-gradient(var(--tintGood), var(--tintGood)) !important; border-color: var(--tintGoodEdge) !important; }
+#spamlens-admin div.notice-error { background-image: linear-gradient(var(--tintBad), var(--tintBad)) !important; border-color: var(--tintBadEdge) !important; }
+#spamlens-admin div.notice-warning, #spamlens-admin div.update-nag { background-image: linear-gradient(var(--tintWarn), var(--tintWarn)) !important; border-color: var(--tintWarnEdge) !important; }
+@media (max-width: 1340px) { #spamlens-admin > :is(.notice, .updated, .error, #message) { max-width: calc(100% - 80px); } }
+@media (max-width: 960px) { #spamlens-admin > :is(.notice, .updated, .error, #message) { max-width: calc(100% - 48px); } }
+@media (max-width: 782px) { #spamlens-admin > :is(.notice, .updated, .error, #message) { max-width: calc(100% - 32px); } }
+body.spamlens-screen #wpbody-content > .update-nag { display: block; }
+#spamlens-admin { margin: 0; margin-inline: -20px 0; flex: 1 0 auto; display: flex; flex-direction: column; background: var(--page); color: var(--ink); font-size: 13px; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+@media (max-width: 782px) {
+	#spamlens-admin { margin-inline: -10px 0; }
+	body.spamlens-screen #wpbody-content > :is(.notice, .update-nag, .updated, .error, #message) { margin-inline: 10px; }
+}
+#spamlens-admin a { color: var(--accentInk); text-decoration: none; }
+#spamlens-admin a:hover { color: var(--ink); text-decoration: none; }
+#spamlens-admin code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; background: var(--surface2); color: var(--ink); border-radius: 4px; padding: 1px 5px; direction: ltr; unicode-bidi: isolate; display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; vertical-align: middle; white-space: nowrap; }
+#spamlens-admin bdi { unicode-bidi: isolate; }
+#spamlens-admin h1, #spamlens-admin h2, #spamlens-admin h3, #spamlens-admin p { margin: 0; padding: 0; color: inherit; }
+#spamlens-admin :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: none; }
+#spamlens-admin :is(input[type="password"], input[type="url"], input[type="text"], input[type="number"], select, textarea) { box-shadow: none; margin: 0; min-height: 0; line-height: normal; max-width: none; }
+#spamlens-admin select { background-image: none; padding-inline-end: 14px; }
+#spamlens-admin input[type="checkbox"], #spamlens-admin input[type="radio"] { margin: 0; accent-color: var(--accent); }
+#spamlens-admin table { border-collapse: collapse; }
+#spamlens-admin .sl-bar { transition: width .3s ease; }
+#spamlens-admin .notice p { margin: 0; padding: 0; font-size: 13px; }
+/* The app's spinner (globals.css .spin): a ring drawn with the text colour, one quarter open. */
+#spamlens-admin .spin { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid currentColor; border-right-color: transparent; animation: sl-spin .7s linear infinite; flex: 0 0 auto; }
+#spamlens-admin [data-size="sm"] .spin, #spamlens-admin .h-7 .spin { width: 10px; height: 10px; }
+@keyframes sl-spin { to { transform: rotate(360deg); } }
+/* The dark bands mirror their arrows in RTL; logos never flip. */
+[dir="rtl"] #spamlens-admin .sl-flip { transform: scaleX(-1); }
+@media (prefers-reduced-motion: reduce) { #spamlens-admin * { transition: none !important; } #spamlens-admin .spin { animation-duration: 1.6s; } }

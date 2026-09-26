@@ -9,7 +9,7 @@
 	convertDeprecationsToExceptions="false"
 >
 	<testsuites>
-		<testsuite name="jev-guard">
+		<testsuite name="spamlens">
 			<directory suffix="Test.php">./tests/</directory>
 		</testsuite>
 	</testsuites>

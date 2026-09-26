@@ -1,10 +1,10 @@
-=== Jev Guard ===
-Contributors: navidkashani
+=== SpamLens ===
+Contributors: veronalabs, mostafa.s1990, kashani
 Tags: spam, comments, antispam, contact form 7, ai
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,11 +12,11 @@ Spam protection for comments, product reviews and Contact Form 7 powered by Jev,
 
 == Description ==
 
-Jev Guard sends each incoming comment, WooCommerce review, pingback and Contact Form 7 submission to Jev — a "System One" decision model by TypeSafe AI that returns calibrated probabilities instead of text — and acts on the answer:
+SpamLens sends each incoming comment, WooCommerce review, pingback and Contact Form 7 submission to Jev — a "System One" decision model by TypeSafe AI that returns calibrated probabilities instead of text — and acts on the answer:
 
 * **Spam** (probability above the spam threshold) goes straight to the Spam folder.
 * **Borderline** comments, comments that look like spam but clearly respond to the page, and abusive comments are **held for moderation**.
-* Everything else is left to WordPress' own rules. Jev Guard never approves a comment on its own.
+* Everything else is left to WordPress' own rules. SpamLens never approves a comment on its own.
 
 If the service cannot be reached, the comment goes through the normal WordPress flow (or is held, your choice), and it is **re-checked automatically** within 20 minutes.
 
@@ -31,26 +31,28 @@ Prices, credits and rate limits are set by the providers and were last checked i
 
 **Other features**
 
-* "Jev" column in the comments list with the decision and probability ("Spam 99%", "Held 63%", "6% spam"), a human-readable category (SEO link spam, scam or phishing, commercial promotion, gibberish or bot, abusive, legitimate) and, when a comment was held for a reason other than its probability, that reason.
-* **Re-check with Jev** row action and a **Check for Spam** button that sweeps the Pending queue in batches.
+* "SpamLens" column in the comments list with the decision and probability ("Spam 99%", "Held 63%", "6% spam"), a human-readable category (SEO link spam, scam or phishing, commercial promotion, gibberish or bot, abusive, legitimate) and, when a comment was held for a reason other than its probability, that reason.
+* **Re-check with SpamLens** row action and a **Check for Spam** button that sweeps the Pending queue in batches.
 * **Calibration** tool: runs Jev on comments you already moderated and reports accuracy, false positives and the thresholds that would fit your site — read-only.
 * History and raw answers in a meta box on the comment edit screen; false-positive / missed-spam counters based on your moderation.
 * Privacy toggles for email, IP and user agent; suggested privacy-policy text; optional notice under the comment form.
-* Filters for everything: `jev_guard_state`, `jev_guard_post_context`, `jev_guard_questions`, `jev_guard_decision`, `jev_guard_skip_comment`, `jev_guard_providers`, `jev_guard_integrations` and more.
+* Filters for everything: `spamlens_state`, `spamlens_post_context`, `spamlens_questions`, `spamlens_decision`, `spamlens_skip_comment`, `spamlens_providers`, `spamlens_integrations` and more.
 
-**Page context.** Jev judges a comment against the page it was posted on. By default it sees the title, type, tags and categories, the excerpt (or the first ~300 characters) and the page's headings. "Extended" sends the first ~1,200 characters — about four times as much page text — for sites where spam is on-topic and well written; "Title only" sends no text from the page at all, which is the right choice for paywalled or members-only content. Membership plugins keep paid posts published, so the plugin cannot tell them apart on its own: pick "Title only" or use the `jev_guard_post_context` filter. The text of password-protected, private and unpublished pages is never sent at any level.
+**Page context.** Jev judges a comment against the page it was posted on. By default it sees the title, type, tags and categories, the excerpt (or the first ~300 characters) and the page's headings. "Extended" sends the first ~1,200 characters — about four times as much page text — for sites where spam is on-topic and well written; "Title only" sends no text from the page at all, which is the right choice for paywalled or members-only content. Membership plugins keep paid posts published, so the plugin cannot tell them apart on its own: pick "Title only" or use the `spamlens_post_context` filter. The text of password-protected, private and unpublished pages is never sent at any level.
 
 **Requirements**: a key from one of the services above. Comment checks run while the visitor waits (about 1–2 s, 5 s timeout by default).
 
-Jev Guard is an independent plugin by Navid Kashani and is not affiliated with, endorsed by or supported by TypeSafe AI, Vercel or OpenRouter. Jev and TypeSafe are marks of TypeSafe AI; they are used only to indicate compatibility.
+SpamLens is an independent plugin by VeronaLabs and is not affiliated with, endorsed by or supported by TypeSafe AI, Vercel or OpenRouter. Jev and TypeSafe are marks of TypeSafe AI; they are used only to indicate compatibility.
 
-Source, issues and releases: https://github.com/navidkashani/jev-guard
+= Source code =
+
+The settings screen and the comments-screen script are built from the TypeScript and SCSS sources in the plugin's `resources/` folder (React, Vite, Tailwind CSS). The same sources, the build configuration and the tests are on GitHub: https://github.com/veronalabs/spamlens. To rebuild: `npm ci && npm run build`.
 
 == External services ==
 
 This plugin sends data to a third-party service to classify submissions. Nothing is sent until you save an API key, and only the service you select receives data.
 
-**What is sent, and when:** for every new comment, review, pingback or Contact Form 7 submission that is not skipped by your settings, the plugin sends the submission text (capped at 6,000 characters), the author name and website, details of the page it belongs to — title, type, tags and categories, and, depending on the Page context setting, the excerpt or the first 300 (1,200 on "Extended") characters of its text and its H2/H3 headings; the text of password-protected, private and unpublished pages is never sent — for replies the first 200 characters of the parent comment, the number and hosts of links in the text, the site name, URL, language and the "About this site" notes you entered, and the author's number of previously approved comments. Optionally (Settings → Jev Guard → Privacy) the author email address, IP address, browser user agent and referer are included. The Test connection and Calibration tools send the same kind of data on demand.
+**What is sent, and when:** for every new comment, review, pingback or Contact Form 7 submission that is not skipped by your settings, the plugin sends the submission text (capped at 6,000 characters), the author name and website, details of the page it belongs to — title, type, tags and categories, and, depending on the Page context setting, the excerpt or the first 300 (1,200 on "Extended") characters of its text and its H2/H3 headings; the text of password-protected, private and unpublished pages is never sent — for replies the first 200 characters of the parent comment, the number and hosts of links in the text, the site name, URL, language and the "About this site" notes you entered, and the author's number of previously approved comments. Optionally (Settings → SpamLens → Privacy) the author email address, IP address, browser user agent and referer are included. The Test connection and Calibration tools send the same kind of data on demand.
 
 **Services** (one of them, as selected in the settings):
 
@@ -71,18 +73,18 @@ Providers alias the model id (`jev-latest`, `typesafe-ai/jev`, `typesafe/jev-lat
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/jev-guard/` or install it from the Plugins screen.
+1. Upload the plugin to `/wp-content/plugins/spamlens/` or install it from the Plugins screen.
 2. Activate it.
-3. Go to Settings → Jev Guard, choose a provider, paste the API key and click "Test connection".
+3. Go to Settings → SpamLens, choose a provider, paste the API key and click "Test connection".
 4. Optionally run the Calibration tool and adjust the thresholds.
 
-You can also define the key in `wp-config.php`: `define( 'JEV_GUARD_API_KEY', '...' );`
+You can also define the key in `wp-config.php`: `define( 'SPAMLENS_API_KEY', '...' );`
 
 == Frequently Asked Questions ==
 
 = Does it replace Akismet? =
 
-It can run alongside it. When another plugin has already flagged a comment as spam, Jev Guard skips its own check to save a request.
+It can run alongside it. When another plugin has already flagged a comment as spam, SpamLens skips its own check to save a request.
 
 = What happens when the service is down? =
 
@@ -98,15 +100,28 @@ Jev is priced per input token (about $0.042 per million tokens at the time of wr
 
 = Which forms are supported? =
 
-Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other form plugins can be added through the `jev_guard_integrations` filter.
+Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other form plugins can be added through the `spamlens_integrations` filter.
 
 == Screenshots ==
 
-1. Settings page with provider, thresholds and Test connection.
-2. "Jev" column and "Re-check with Jev" row action in the comments list.
-3. Calibration results.
+1. Overview: connection status and what SpamLens has checked, spammed and held.
+2. Settings: pick a provider, paste the API key, choose or pin the model and test the connection.
+3. Detection settings: spam and hold thresholds, abusive comments, "About this site" and page context.
+4. The SpamLens column in the comments list: the decision and spam probability for every comment.
+5. The Spam folder with the category Jev gave each comment.
+6. Calibration: how Jev would have scored comments you already moderated, with suggested thresholds.
+7. The SpamLens box on a comment: scores, model, history and Re-check.
 
 == Changelog ==
+
+= 1.1.0 =
+* Renamed from Jev Guard to SpamLens. Settings and statistics from Jev Guard are copied on first activation. Developers: hooks are now `spamlens_*` and the wp-config constant is `SPAMLENS_API_KEY`.
+* New settings screen with Overview, Settings and Calibration tabs.
+* The settings screen, Re-check and Check for Spam now use the WordPress REST API instead of admin-ajax.
+* An API key can now be removed from the settings screen.
+* The setup notice can be dismissed without JavaScript.
+* Rebuilt on the VeronaLabs plugin structure (service container, Composer autoloading through WP Scoper).
+* Developers: classes moved to the `SpamLens\Service\…` namespaces; custom integrations now implement `SpamLens\Service\Integrations\Integration`.
 
 = 1.0.0 =
 * Initial release.
@@ -114,12 +129,15 @@ Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other
 * Providers: TypeSafe AI, Vercel AI Gateway, OpenRouter and custom endpoints.
 * Three-tier decision (spam / hold / allow) with hold rules for borderline, on-topic-but-spammy and abusive comments.
 * Retry queue re-checks comments the service could not classify within 20 minutes.
-* "Page context" setting (Title only / Standard / Extended) controls how much of the page is sent; `jev_guard_post_context` filter.
+* "Page context" setting (Title only / Standard / Extended) controls how much of the page is sent; `spamlens_post_context` filter.
 * The text of password-protected, private and unpublished pages is never sent.
 * A request the provider rejects as too large is retried once without the page text.
-* Calibration tool, statistics, and a "Jev" column in the comments list with decision, category and hold reason.
+* Calibration tool, statistics, and a "SpamLens" column in the comments list with decision, category and hold reason.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Jev Guard is now SpamLens, with a new settings screen. Custom integrations must implement SpamLens\Service\Integrations\Integration.
 
 = 1.0.0 =
 Initial release.

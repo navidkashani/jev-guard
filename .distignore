@@ -1,26 +1,43 @@
-# Excluded from the distributable zip (wp dist-archive / WP.org deploy)
+# Excluded from the distributable zip (rsync --exclude-from in .github/workflows and bin/build-zip.sh).
+# Everything else ships: spamlens.php, uninstall.php, readme.txt, LICENSE, src/, views/, public/ (built assets),
+# resources/ (the TypeScript and SCSS sources of public/, plus resources/assets used at runtime), languages/,
+# packages/ (the autoloader WP Scoper writes on composer install).
 /.git
 /.github
 /.gitignore
 /.gitattributes
 /.distignore
 /.editorconfig
+/.wordpress-org
 /.wp-env.json
 /.wp-env.override.json
+/.phpunit.result.cache
+/.phpunit.cache
+/.DS_Store
 /node_modules
 /vendor
 /bin
 /tests
+/dist
+/build
 /composer.json
 /composer.lock
 /package.json
 /package-lock.json
 /phpcs.xml.dist
 /phpunit.xml.dist
-/.phpunit.result.cache
-/.phpunit.cache
+/tsconfig.json
+/components.json
+/eslint.config.js
+/eslint.config.mjs
+/vite.config.mjs
+/vite.config.js
+/vite.config.entries.mjs
+/vite.config.comments.mjs
+/vitest.config.ts
+/vitest.config.mjs
 /README.md
 /CHANGELOG.md
 /CONTRIBUTING.md
 /SECURITY.md
-/.DS_Store
+/*.zip

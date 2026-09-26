@@ -1,0 +1,145 @@
+name: Tests
+
+# The one definition of the test suite. Runs on pushes to main and on pull requests; deploy.yml calls it on a
+# published release, so nothing reaches WordPress.org unless the same suite is green on the release commit.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: PHP syntax (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        php: ['7.4', '8.1', '8.4']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - run: find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -not -path './packages/*' -print0 | xargs -0 -n1 php -l
+
+  phpcs:
+    name: Coding standards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+      - uses: ramsey/composer-install@v4
+      - run: composer validate --strict --no-check-publish
+      - run: composer phpcs
+
+  phpunit:
+    name: PHPUnit (PHP ${{ matrix.php }}, WP ${{ matrix.wp }}, CF7 ${{ matrix.cf7 }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Declared floor. CF7 6.x requires WordPress 6.7, so the last 5.9 release is used here.
+          - { php: '7.4', wp: '6.4.11', cf7: '5.9.8' }
+          - { php: '7.4', wp: 'latest', cf7: '6.1.7' }
+          - { php: '8.2', wp: 'latest', cf7: '6.1.7' }
+          - { php: '8.4', wp: 'latest', cf7: '6.1.7' }
+          # Matches .wp-env.json.
+          - { php: '8.5', wp: 'latest', cf7: '6.1.7' }
+    services:
+      mariadb:
+        image: mariadb:lts
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: wordpress_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "healthcheck.sh --connect --innodb_initialized"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      WP_TESTS_DIR: /tmp/wordpress-tests-lib
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli, mbstring, intl, zip
+          tools: composer:v2
+          coverage: none
+      - uses: ramsey/composer-install@v4
+      - name: Install WordPress ${{ matrix.wp }} and the test library
+        run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }} ${{ matrix.cf7 }}
+      - run: vendor/bin/phpunit
+
+  assets:
+    name: Front end (types, tests, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Built files exist
+        run: for f in public/app/settings.js public/app/settings.css public/js/comments.js public/css/comments.css; do test -s "$f" || { echo "missing $f"; exit 1; }; done
+
+  plugin-check:
+    name: WordPress.org Plugin Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Build the plugin folder exactly as it ships
+        run: bash bin/build-zip.sh
+      - uses: wordpress/plugin-check-action@v1
+        with:
+          build-dir: dist/spamlens
+
+  version:
+    name: Version consistency
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - run: |
+          H=$(grep -oE 'Version:[[:space:]]+[0-9.]+' spamlens.php | awk '{print $2}')
+          C=$(grep -oE "'SPAMLENS_VERSION', '[0-9.]+'" src/constants.php | grep -oE '[0-9.]+' | tail -1)
+          R=$(grep -oE 'Stable tag: [0-9.]+' readme.txt | awk '{print $3}')
+          P=$(node -p "require('./package.json').version")
+          echo "header $H constant $C readme $R package $P"
+          test "$H" = "$C" -a "$H" = "$R" -a "$H" = "$P"
+          grep -q "^## \[$H\]" CHANGELOG.md || { echo "CHANGELOG.md has no entry for $H"; exit 1; }
+          grep -q "^= $H =" readme.txt || { echo "readme.txt changelog has no entry for $H"; exit 1; }
