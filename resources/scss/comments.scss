@@ -1,0 +1,109 @@
+// SpamLens on the comments list and the comment edit screen: the "SpamLens" column, the Re-check and Check for Spam
+// status text, and the meta box. Compiled to public/css/comments.css (npm run build:css).
+
+$ok: #00a32a;
+$error: #d63638;
+$muted: #646970;
+
+.spamlens-inline-result {
+	display: inline-block;
+	margin-inline-start: 8px;
+	vertical-align: middle;
+
+	&.is-ok {
+		color: $ok;
+	}
+
+	&.is-error {
+		color: $error;
+	}
+
+	&.is-busy {
+		color: $muted;
+		font-style: italic;
+	}
+}
+
+// Comments-list column: a decision pill with the category / reason wrapped underneath.
+.spamlens-cell {
+	display: block;
+	font-size: 12px;
+	line-height: 1.5;
+
+	&.is-busy {
+		opacity: 0.5;
+	}
+}
+
+.spamlens-pill {
+	display: inline-block;
+	padding: 1px 7px;
+	border-radius: 3px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.spamlens-detail {
+	display: block;
+	margin-top: 2px;
+	color: $muted;
+}
+
+@mixin tone($background, $color) {
+	.spamlens-pill {
+		background: $background;
+		color: $color;
+	}
+}
+
+.spamlens-cell--spam {
+	@include tone(#fcf0f1, #8a2424);
+}
+
+.spamlens-cell--hold {
+	@include tone(#fcf9e8, #6e5500);
+}
+
+.spamlens-cell--allow {
+	@include tone(#edfaef, #1a5e2a);
+}
+
+.spamlens-cell--error,
+.spamlens-cell--skipped {
+	@include tone(#f0f0f1, $muted);
+}
+
+.spamlens-cell--none {
+	color: #8c8f94;
+}
+
+.spamlens-row-moved .spamlens-inline-result {
+	font-weight: 600;
+}
+
+// Meta box on the comment edit screen.
+.spamlens-verdict th {
+	width: 160px;
+}
+
+.spamlens-raw {
+	max-height: 320px;
+	overflow: auto;
+	background: #f6f7f7;
+	padding: 8px;
+	font-size: 12px;
+}
+
+.spamlens-history {
+	margin-block: 0 12px;
+	margin-inline: 1.5em 0;
+	list-style: disc;
+}
+
+.column-spamlens {
+	width: 14%;
+}
+
+.spamlens-bulk {
+	margin-inline-start: 8px;
+}

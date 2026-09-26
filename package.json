@@ -1,26 +1,56 @@
 {
-  "name": "jev-guard",
-  "version": "1.0.0",
+  "name": "spamlens",
+  "version": "1.1.0",
   "private": true,
-  "description": "Dev tooling for the Jev Guard WordPress plugin (wp-env based test site and PHPUnit runner).",
+  "description": "Front end and dev tooling for the SpamLens WordPress plugin: the settings app (React, Vite, Tailwind), the comments-screen script, wp-env and the test runners.",
   "license": "GPL-2.0-or-later",
+  "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/navidkashani/jev-guard.git"
+    "url": "git+https://github.com/veronalabs/spamlens.git"
   },
   "bugs": {
-    "url": "https://github.com/navidkashani/jev-guard/issues"
+    "url": "https://github.com/veronalabs/spamlens/issues"
   },
-  "homepage": "https://github.com/navidkashani/jev-guard#readme",
+  "homepage": "https://github.com/veronalabs/spamlens#readme",
   "scripts": {
+    "build": "npm run build:app && npm run build:comments && npm run build:css",
+    "build:app": "vite build",
+    "build:comments": "vite build -c vite.config.comments.mjs",
+    "build:css": "sass resources/scss/comments.scss:public/css/comments.css --style=compressed --no-source-map",
+    "dev": "concurrently \"vite build --watch\" \"vite build -c vite.config.comments.mjs --watch\" \"sass --watch resources/scss/comments.scss:public/css/comments.css --no-source-map\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build:pot": "wp i18n make-pot . languages/spamlens.pot --slug=spamlens --domain=spamlens --exclude=node_modules,vendor,packages,resources,tests",
     "start": "wp-env start",
     "stop": "wp-env stop",
     "destroy": "wp-env destroy",
-    "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/jev-guard vendor/bin/phpunit",
+    "test:php": "wp-env run tests-cli --env-cwd=wp-content/plugins/spamlens vendor/bin/phpunit",
     "test:php:7.4": "WP_ENV_PHP_VERSION=7.4 wp-env start && WP_ENV_PHP_VERSION=7.4 npm run test:php",
     "cli": "wp-env run cli wp"
   },
   "devDependencies": {
-    "@wordpress/env": "^11.15.0"
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "@wordpress/api-fetch": "^7.55.0",
+    "@wordpress/env": "^11.16.0",
+    "@wordpress/i18n": "^6.28.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "concurrently": "^9.1.0",
+    "lucide-react": "^1.47.0",
+    "radix-ui": "^1.6.7",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "sass": "^1.83.0",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.0",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.2"
   }
 }

@@ -2,19 +2,19 @@
 /**
  * Classifier and Verdict tests.
  *
- * @package JevGuard
+ * @package SpamLens
  */
 
-use JevGuard\Api\Client;
-use JevGuard\Classifier;
-use JevGuard\Settings;
-use JevGuard\Submission;
-use JevGuard\Verdict;
+use SpamLens\Service\Api\Client;
+use SpamLens\Service\Classifier\Classifier;
+use SpamLens\Service\Settings\Settings;
+use SpamLens\Service\Classifier\Submission;
+use SpamLens\Service\Classifier\Verdict;
 
 /**
  * State building, questions, caching and the decision policy.
  */
-class ClassifierTest extends JevGuard_TestCase {
+class ClassifierTest extends SpamLens_TestCase {
 
 	/**
 	 * A comment submission on a real post.
@@ -304,26 +304,26 @@ class ClassifierTest extends JevGuard_TestCase {
 	}
 
 	public function test_post_context_filter_can_blank_context() {
-		add_filter( 'jev_guard_post_context', '__return_empty_array' );
+		add_filter( 'spamlens_post_context', '__return_empty_array' );
 		$ctx = $this->context_for( self::factory()->post->create( array( 'post_title' => 'Paywalled' ) ) );
-		remove_filter( 'jev_guard_post_context', '__return_empty_array' );
+		remove_filter( 'spamlens_post_context', '__return_empty_array' );
 		$this->assertSame( array( 'is_reply' => false ), $ctx );
 	}
 
 	public function test_invalid_request_retries_with_title_only_context() {
 		update_option( 'comment_max_links', '10' );
-		JevGuard_HttpStub::queue( 422, array( 'message' => 'state too large' ) );
-		JevGuard_HttpStub::queue_answers( 0.2, 0.9, 0.0, 'legitimate' );
+		SpamLens_HttpStub::queue( 422, array( 'message' => 'state too large' ) );
+		SpamLens_HttpStub::queue_answers( 0.2, 0.9, 0.0, 'legitimate' );
 
 		$verdict = ( new Classifier() )->classify( $this->submission() );
 
 		$this->assertInstanceOf( Verdict::class, $verdict );
 		$this->assertSame( 'allow', $verdict->decision );
-		$this->assertCount( 2, JevGuard_HttpStub::$requests );
+		$this->assertCount( 2, SpamLens_HttpStub::$requests );
 
-		$first = (array) json_decode( JevGuard_HttpStub::$requests[0]['args']['body'], true );
+		$first = (array) json_decode( SpamLens_HttpStub::$requests[0]['args']['body'], true );
 		$this->assertArrayHasKey( 'post_excerpt', $first['state']['context'] );
-		$second = JevGuard_HttpStub::last_body();
+		$second = SpamLens_HttpStub::last_body();
 		$this->assertSame( 'How to tune spam thresholds', $second['state']['context']['post_title'] );
 		$this->assertArrayNotHasKey( 'post_excerpt', $second['state']['context'] );
 		$this->assertArrayNotHasKey( 'post_outline', $second['state']['context'] );
@@ -331,11 +331,11 @@ class ClassifierTest extends JevGuard_TestCase {
 
 	public function test_invalid_request_without_page_text_is_not_retried() {
 		Settings::update( array( 'page_context' => 'title' ) );
-		JevGuard_HttpStub::queue( 422, '' );
+		SpamLens_HttpStub::queue( 422, '' );
 		$result = ( new Classifier() )->classify( $this->submission() );
 		$this->assertWPError( $result );
 		$this->assertSame( 'invalid_request', $result->get_error_code() );
-		$this->assertCount( 1, JevGuard_HttpStub::$requests );
+		$this->assertCount( 1, SpamLens_HttpStub::$requests );
 	}
 
 	public function test_form_state_uses_submission_key_and_fields() {
@@ -391,7 +391,7 @@ class ClassifierTest extends JevGuard_TestCase {
 	 * @dataProvider decisions
 	 */
 	public function test_decide( $spam, $genuine, $abuse, $links, $expected, $reason ) {
-		$verdict = Verdict::from_answers( JevGuard_HttpStub::answers_body( $spam, $genuine, $abuse )['answers'], 'jev-1.13.0' );
+		$verdict = Verdict::from_answers( SpamLens_HttpStub::answers_body( $spam, $genuine, $abuse )['answers'], 'jev-1.13.0' );
 		$verdict->decide(
 			array(
 				'spam_threshold' => 0.85,
@@ -423,7 +423,7 @@ class ClassifierTest extends JevGuard_TestCase {
 	}
 
 	public function test_link_rule_disabled_when_max_links_is_zero() {
-		$verdict = Verdict::from_answers( JevGuard_HttpStub::answers_body( 0.6, 0.9, 0.0 )['answers'] );
+		$verdict = Verdict::from_answers( SpamLens_HttpStub::answers_body( 0.6, 0.9, 0.0 )['answers'] );
 		$verdict->decide(
 			array(
 				'spam_threshold' => 0.85,
@@ -436,7 +436,7 @@ class ClassifierTest extends JevGuard_TestCase {
 	}
 
 	public function test_abuse_ignored_when_hold_abusive_off() {
-		$verdict = Verdict::from_answers( JevGuard_HttpStub::answers_body( 0.1, 0.9, 2.0 )['answers'] );
+		$verdict = Verdict::from_answers( SpamLens_HttpStub::answers_body( 0.1, 0.9, 2.0 )['answers'] );
 		$verdict->decide(
 			array(
 				'spam_threshold' => 0.85,
@@ -448,16 +448,16 @@ class ClassifierTest extends JevGuard_TestCase {
 	}
 
 	public function test_decision_filter_can_override() {
-		add_filter( 'jev_guard_decision', static function () { return 'hold'; } );
-		$verdict = Verdict::from_answers( JevGuard_HttpStub::answers_body( 0.99, 0.0, 0.0 )['answers'] );
+		add_filter( 'spamlens_decision', static function () { return 'hold'; } );
+		$verdict = Verdict::from_answers( SpamLens_HttpStub::answers_body( 0.99, 0.0, 0.0 )['answers'] );
 		$verdict->decide( array() );
 		$this->assertSame( 'hold', $verdict->decision );
 		$this->assertSame( 'filter', $verdict->reason );
-		remove_all_filters( 'jev_guard_decision' );
+		remove_all_filters( 'spamlens_decision' );
 	}
 
 	public function test_verdict_round_trips_through_array() {
-		$verdict           = Verdict::from_answers( JevGuard_HttpStub::answers_body( 0.94, 0.1, 0.0, 'seo_link_spam' )['answers'], 'jev-1.13.0', array( 'input_tokens' => 10 ) );
+		$verdict           = Verdict::from_answers( SpamLens_HttpStub::answers_body( 0.94, 0.1, 0.0, 'seo_link_spam' )['answers'], 'jev-1.13.0', array( 'input_tokens' => 10 ) );
 		$verdict->guid     = 'abc';
 		$verdict->links    = 2;
 		$verdict->decide( array() );
@@ -474,7 +474,7 @@ class ClassifierTest extends JevGuard_TestCase {
 
 	public function test_classify_calls_api_and_caches() {
 		update_option( 'comment_max_links', '10' ); // Keep the link-heavy rule out of this test.
-		JevGuard_HttpStub::queue_answers( 0.94 );
+		SpamLens_HttpStub::queue_answers( 0.94 );
 		$classifier = new Classifier();
 		$s          = $this->submission();
 
@@ -484,13 +484,13 @@ class ClassifierTest extends JevGuard_TestCase {
 		$this->assertSame( 'jev-1.13.0', $verdict->model );
 		$this->assertFalse( $verdict->cached );
 		$this->assertSame( 2, $verdict->links );
-		$this->assertCount( 1, JevGuard_HttpStub::$requests );
+		$this->assertCount( 1, SpamLens_HttpStub::$requests );
 
 		// Same submission within 10 minutes: no second request.
 		$again = $classifier->classify( $s );
 		$this->assertTrue( $again->cached );
 		$this->assertSame( 'spam', $again->decision );
-		$this->assertCount( 1, JevGuard_HttpStub::$requests );
+		$this->assertCount( 1, SpamLens_HttpStub::$requests );
 
 		// Cached answers are re-decided with the current thresholds.
 		Settings::update( array( 'spam_threshold' => 0.99 ) );
@@ -499,23 +499,23 @@ class ClassifierTest extends JevGuard_TestCase {
 		$this->assertSame( 'hold', $redecided->decision );
 
 		// skip_cache forces a request.
-		JevGuard_HttpStub::queue_answers( 0.1 );
+		SpamLens_HttpStub::queue_answers( 0.1 );
 		$fresh = $classifier->classify( $s, array( 'skip_cache' => true ) );
 		$this->assertFalse( $fresh->cached );
-		$this->assertCount( 2, JevGuard_HttpStub::$requests );
+		$this->assertCount( 2, SpamLens_HttpStub::$requests );
 	}
 
 	public function test_classify_returns_wp_error_on_failure() {
-		JevGuard_HttpStub::queue( 401, '' );
+		SpamLens_HttpStub::queue( 401, '' );
 		$result = ( new Classifier() )->classify( $this->submission() );
 		$this->assertWPError( $result );
 		$this->assertSame( 'auth', $result->get_error_code() );
 	}
 
 	public function test_request_body_matches_wire_format() {
-		JevGuard_HttpStub::queue_answers( 0.5 );
+		SpamLens_HttpStub::queue_answers( 0.5 );
 		( new Classifier() )->classify( $this->submission() );
-		$body = JevGuard_HttpStub::last_body();
+		$body = SpamLens_HttpStub::last_body();
 		$this->assertSame( array( 'model', 'state', 'questions' ), array_keys( $body ) );
 		$this->assertSame( 'comment', $body['state']['kind'] );
 		$this->assertArrayHasKey( 'comment', $body['state'] );
@@ -530,7 +530,7 @@ class ClassifierTest extends JevGuard_TestCase {
 
 		foreach ( $corpus['items'] as $item ) {
 			$stub = $item['stub'];
-			JevGuard_HttpStub::queue_answers( $stub['spam'], $stub['genuine'], $stub['abuse'], $stub['category'] );
+			SpamLens_HttpStub::queue_answers( $stub['spam'], $stub['genuine'], $stub['abuse'], $stub['category'] );
 
 			$s               = new Submission();
 			$s->post_id      = $post_id;

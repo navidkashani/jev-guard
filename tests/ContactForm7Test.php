@@ -2,17 +2,17 @@
 /**
  * Contact Form 7 integration tests (run only when CF7 is installed in the test site).
  *
- * @package JevGuard
+ * @package SpamLens
  */
 
-use JevGuard\Integrations\ContactForm7;
-use JevGuard\Settings;
-use JevGuard\Stats;
+use SpamLens\Service\Integrations\ContactForm7;
+use SpamLens\Service\Settings\Settings;
+use SpamLens\Service\Stats\Stats;
 
 /**
  * `wpcf7_spam` behaviour.
  */
-class ContactForm7Test extends JevGuard_TestCase {
+class ContactForm7Test extends SpamLens_TestCase {
 
 	/**
 	 * Setup.
@@ -74,16 +74,16 @@ class ContactForm7Test extends JevGuard_TestCase {
 	}
 
 	public function test_spam_verdict_marks_submission_spam_with_log() {
-		JevGuard_HttpStub::queue_answers( 0.95, 0.05, 0.0, 'commercial_promotion' );
+		SpamLens_HttpStub::queue_answers( 0.95, 0.05, 0.0, 'commercial_promotion' );
 		$submission = $this->submit( 'Buy cheap watches http://cheap.example.com/' );
 
 		$this->assertSame( 'spam', $submission->get_status(), wp_json_encode( $submission->get_invalid_fields() ) );
 		$log = $submission->get_spam_log();
 		$this->assertNotEmpty( $log );
-		$this->assertSame( 'jev_guard', $log[0]['agent'] );
+		$this->assertSame( 'spamlens', $log[0]['agent'] );
 		$this->assertStringContainsString( '95% spam', $log[0]['reason'] );
 
-		$body = JevGuard_HttpStub::last_body();
+		$body = SpamLens_HttpStub::last_body();
 		$this->assertSame( 'contact_form', $body['state']['kind'] );
 		$this->assertSame( 'Test form', $body['state']['context']['form_name'] );
 		$this->assertSame( 'Buy cheap watches http://cheap.example.com/', $body['state']['submission'] );
@@ -94,21 +94,21 @@ class ContactForm7Test extends JevGuard_TestCase {
 	}
 
 	public function test_borderline_is_delivered_unless_filtered() {
-		JevGuard_HttpStub::queue_answers( 0.6, 0.5 );
+		SpamLens_HttpStub::queue_answers( 0.6, 0.5 );
 		$submission = $this->submit( 'Interesting, tell me more about pricing.' );
 		$this->assertSame( 'mail_sent', $submission->get_status() );
 		$this->assertSame( 1, Stats::get()['integrations']['cf7']['held'] );
 
 		$this->reset_submission_singleton();
-		add_filter( 'jev_guard_cf7_treat_hold_as_spam', '__return_true' );
-		JevGuard_HttpStub::queue_answers( 0.6, 0.5 );
+		add_filter( 'spamlens_cf7_treat_hold_as_spam', '__return_true' );
+		SpamLens_HttpStub::queue_answers( 0.6, 0.5 );
 		$submission = $this->submit( 'Interesting, tell me more about pricing again.' );
 		$this->assertSame( 'spam', $submission->get_status() );
-		remove_filter( 'jev_guard_cf7_treat_hold_as_spam', '__return_true' );
+		remove_filter( 'spamlens_cf7_treat_hold_as_spam', '__return_true' );
 	}
 
 	public function test_api_error_fails_open() {
-		JevGuard_HttpStub::queue_error();
+		SpamLens_HttpStub::queue_error();
 		$submission = $this->submit( 'Hello there, just a question.' );
 		$this->assertSame( 'mail_sent', $submission->get_status() );
 		$this->assertSame( 1, Stats::get()['integrations']['cf7']['errors'] );
@@ -118,12 +118,12 @@ class ContactForm7Test extends JevGuard_TestCase {
 		Settings::update( array( 'integrations' => array( 'comments' => true, 'cf7' => false ) ) );
 		$submission = $this->submit( 'Hello there.' );
 		$this->assertSame( 'mail_sent', $submission->get_status() );
-		$this->assertCount( 0, JevGuard_HttpStub::$requests );
+		$this->assertCount( 0, SpamLens_HttpStub::$requests );
 	}
 
 	public function test_already_flagged_submission_is_not_rechecked() {
-		$integration = new ContactForm7( JevGuard\Plugin::instance()->classifier() );
+		$integration = new ContactForm7( SpamLens\Bootstrap::get( 'classifier' ) );
 		$this->assertTrue( $integration->filter_spam( true, null ) );
-		$this->assertCount( 0, JevGuard_HttpStub::$requests );
+		$this->assertCount( 0, SpamLens_HttpStub::$requests );
 	}
 }

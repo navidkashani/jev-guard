@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
-<ruleset name="Jev Guard">
-	<description>Coding standards for the Jev Guard plugin.</description>
+<ruleset name="SpamLens">
+	<description>Coding standards for the SpamLens plugin.</description>
 
 	<file>.</file>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/tests/*</exclude-pattern>
+	<exclude-pattern>*/packages/*</exclude-pattern>
+	<exclude-pattern>*/public/*</exclude-pattern>
+	<exclude-pattern>*/resources/*</exclude-pattern>
 
 	<arg value="sp"/>
 	<arg name="basepath" value="."/>
@@ -17,7 +20,7 @@
 	<config name="testVersion" value="7.4-"/>
 
 	<rule ref="WordPress">
-		<!-- PSR-4 class files (includes/Foo/Bar.php) instead of class-foo-bar.php. -->
+		<!-- PSR-4 class files (src/Service/Foo/Bar.php) instead of class-foo-bar.php. -->
 		<exclude name="WordPress.Files.FileName"/>
 	</rule>
 	<rule ref="WordPress-Extra"/>
@@ -26,7 +29,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="jev-guard"/>
+				<element value="spamlens"/>
 			</property>
 		</properties>
 	</rule>
@@ -34,9 +37,9 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="jev_guard"/>
-				<element value="JevGuard"/>
-				<element value="JEV_GUARD"/>
+				<element value="spamlens"/>
+				<element value="SpamLens"/>
+				<element value="SPAMLENS"/>
 			</property>
 		</properties>
 	</rule>

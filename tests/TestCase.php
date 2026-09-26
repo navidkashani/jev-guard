@@ -2,28 +2,29 @@
 /**
  * Base test case.
  *
- * @package JevGuard
+ * @package SpamLens
  */
 
-use JevGuard\Integrations\Comments;
-use JevGuard\Settings;
-use JevGuard\Stats;
+use SpamLens\Service\Integrations\Comments;
+use SpamLens\Service\Settings\Settings;
+use SpamLens\Service\Stats\Stats;
 
 /**
  * Shared setup: stubbed HTTP, configured key, clean options.
  */
-abstract class JevGuard_TestCase extends WP_UnitTestCase {
+abstract class SpamLens_TestCase extends WP_UnitTestCase {
 
 	/**
 	 * Setup.
 	 */
 	public function set_up() {
 		parent::set_up();
-		JevGuard_HttpStub::reset();
-		JevGuard_HttpStub::install();
+		SpamLens_HttpStub::reset();
+		SpamLens_HttpStub::install();
 		delete_option( Settings::OPTION );
 		delete_option( Stats::OPTION );
-		delete_option( 'jev_guard_last_error' );
+		delete_option( 'spamlens_last_error' );
+		delete_option( 'spamlens_models' );
 		Settings::update( array( 'api_key' => 'test-key' ) );
 		// Strings, as core compares option values strictly ('1' === get_option()).
 		update_option( 'comment_moderation', '0' );
@@ -40,7 +41,7 @@ abstract class JevGuard_TestCase extends WP_UnitTestCase {
 	 * Teardown.
 	 */
 	public function tear_down() {
-		remove_filter( 'pre_http_request', array( 'JevGuard_HttpStub', 'intercept' ), 10 );
+		remove_filter( 'pre_http_request', array( 'SpamLens_HttpStub', 'intercept' ), 10 );
 		remove_filter( 'comment_flood_filter', '__return_false' );
 		wp_clear_scheduled_hook( Comments::CRON_HOOK );
 		Comments::reset_request_state();
@@ -53,7 +54,7 @@ abstract class JevGuard_TestCase extends WP_UnitTestCase {
 	 */
 	protected function flush_transients() {
 		global $wpdb;
-		$names = $wpdb->get_col( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '_transient_jev_guard_%' OR option_name LIKE '_transient_timeout_jev_guard_%'" ); // phpcs:ignore
+		$names = $wpdb->get_col( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '_transient_spamlens_%' OR option_name LIKE '_transient_timeout_spamlens_%'" ); // phpcs:ignore
 		foreach ( $names as $name ) {
 			delete_option( $name );
 		}
@@ -95,7 +96,7 @@ abstract class JevGuard_TestCase extends WP_UnitTestCase {
 	 * @return Comments
 	 */
 	protected function comments(): Comments {
-		return JevGuard\Plugin::instance()->integration( 'comments' );
+		return SpamLens\Bootstrap::get( 'integrations' )->comments();
 	}
 
 	/**

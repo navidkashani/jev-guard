@@ -2,13 +2,13 @@
 /**
  * Queues fake HTTP responses through `pre_http_request` and records requests.
  *
- * @package JevGuard
+ * @package SpamLens
  */
 
 /**
  * HTTP stub.
  */
-class JevGuard_HttpStub {
+class SpamLens_HttpStub {
 
 	/**
 	 * Queued responses.
