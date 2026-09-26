@@ -69,7 +69,7 @@ Jev is primarily trained on English, where it achieves its best accuracy. Other 
 
 == Model versions ==
 
-Providers alias the model id (`jev-latest`, `typesafe-ai/jev`, `typesafe/jev-latest`) to the current release. Every verdict stores the versioned model id that actually answered (for example `jev-1.13.0`). Once your thresholds are calibrated, put that versioned id in the Model field so a model upgrade cannot shift your scores; re-run the Calibration tool when you decide to move to a newer version.
+Providers alias the model id (`jev-latest`, `typesafe-ai/jev`, `typesafe/jev-latest`) to the current release. Every verdict stores the versioned model id that actually answered (for example `jev-1.13.0`). Once your thresholds are calibrated, pick that version in the Model list (it lists the versions that have answered on your site, per provider) so a model upgrade cannot shift your scores; re-run the Calibration tool when you decide to move to a newer version.
 
 == Installation ==
 
@@ -98,6 +98,10 @@ The check runs synchronously and typically takes 1–2 seconds; it is capped by 
 
 Jev is priced per input token (about $0.042 per million tokens at the time of writing); a comment check uses roughly 500 tokens. The plugin caches identical submissions for 10 minutes and skips moderators, disallowed-list matches and already-flagged comments.
 
+= I used Jev Guard. What happens when I install SpamLens? =
+
+SpamLens is the new name of Jev Guard. When you activate SpamLens it switches Jev Guard off, so comments are not checked twice, and brings over its settings, statistics, the scores stored on each comment and any comments waiting for a re-check. A key defined as `JEV_GUARD_API_KEY` in `wp-config.php` keeps working. You can then delete Jev Guard.
+
 = Which forms are supported? =
 
 Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other form plugins can be added through the `spamlens_integrations` filter.
@@ -115,8 +119,10 @@ Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other
 == Changelog ==
 
 = 1.1.0 =
-* Renamed from Jev Guard to SpamLens. Settings and statistics from Jev Guard are copied on first activation. Developers: hooks are now `spamlens_*` and the wp-config constant is `SPAMLENS_API_KEY`.
+* Renamed from Jev Guard to SpamLens. Activating SpamLens switches Jev Guard off and brings over its settings, statistics, comment scores and re-check queue; a `JEV_GUARD_API_KEY` constant keeps working. Developers: hooks are now `spamlens_*` and the wp-config constant is `SPAMLENS_API_KEY`.
 * New settings screen with Overview, Settings and Calibration tabs.
+* Model is now a list: the provider default, or a version that has answered on your site, to pin after calibrating.
+* The settings screen checks the thresholds and timeout before saving, and asks before leaving with unsaved changes. Thresholds can no longer be set below 0.5 (spam) or 0.1 (hold).
 * The settings screen, Re-check and Check for Spam now use the WordPress REST API instead of admin-ajax.
 * An API key can now be removed from the settings screen.
 * The setup notice can be dismissed without JavaScript.
@@ -124,15 +130,15 @@ Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other
 * Developers: classes moved to the `SpamLens\Service\…` namespaces; custom integrations now implement `SpamLens\Service\Integrations\Integration`.
 
 = 1.0.0 =
-* Initial release.
+* Initial release, as Jev Guard (GitHub only).
 * Checks comments, WooCommerce reviews, pingbacks and Contact Form 7 submissions.
 * Providers: TypeSafe AI, Vercel AI Gateway, OpenRouter and custom endpoints.
 * Three-tier decision (spam / hold / allow) with hold rules for borderline, on-topic-but-spammy and abusive comments.
 * Retry queue re-checks comments the service could not classify within 20 minutes.
-* "Page context" setting (Title only / Standard / Extended) controls how much of the page is sent; `spamlens_post_context` filter.
+* "Page context" setting (Title only / Standard / Extended) controls how much of the page is sent; `jev_guard_post_context` filter.
 * The text of password-protected, private and unpublished pages is never sent.
 * A request the provider rejects as too large is retried once without the page text.
-* Calibration tool, statistics, and a "SpamLens" column in the comments list with decision, category and hold reason.
+* Calibration tool, statistics, and a "Jev" column in the comments list with decision, category and hold reason.
 
 == Upgrade Notice ==
 

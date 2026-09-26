@@ -31,6 +31,10 @@ GitHub's green "Download ZIP" button gives a folder named `spamlens-main`; WordP
 
 The key can also be defined in `wp-config.php`: `define( 'SPAMLENS_API_KEY', '...' );`
 
+### Upgrading from Jev Guard
+
+SpamLens is the new name of Jev Guard (1.0.0). Activating SpamLens switches Jev Guard off and brings over its settings, statistics, the scores and history stored on each comment, and the re-check queue. `JEV_GUARD_API_KEY` in `wp-config.php` is still read. Code that used the old names must move to the new ones: `jev_guard_*` hooks are `spamlens_*`, and classes are under `SpamLens\Service\…`.
+
 ## What is sent to the provider
 
 Nothing is sent until you save an API key, and only the provider you selected receives data. For each submission that is not skipped by your settings the plugin sends:
