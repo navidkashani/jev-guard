@@ -4,7 +4,7 @@ Tags: spam, comments, antispam, contact form 7, ai
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -118,32 +118,18 @@ Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other
 
 == Changelog ==
 
-= 1.1.0 =
-* Renamed from Jev Guard to SpamLens. Activating SpamLens switches Jev Guard off and brings over its settings, statistics, comment scores and re-check queue; a `JEV_GUARD_API_KEY` constant keeps working. Developers: hooks are now `spamlens_*` and the wp-config constant is `SPAMLENS_API_KEY`.
-* New settings screen with Overview, Settings and Calibration tabs.
-* Model is now a list: the provider default, or a version that has answered on your site, to pin after calibrating.
-* The settings screen checks the thresholds and timeout before saving, and asks before leaving with unsaved changes. Thresholds can no longer be set below 0.5 (spam) or 0.1 (hold).
-* The settings screen, Re-check and Check for Spam now use the WordPress REST API instead of admin-ajax.
-* An API key can now be removed from the settings screen.
-* The setup notice can be dismissed without JavaScript.
-* Rebuilt on the VeronaLabs plugin structure (service container, Composer autoloading through WP Scoper).
-* Developers: classes moved to the `SpamLens\Service\…` namespaces; custom integrations now implement `SpamLens\Service\Integrations\Integration`.
-
 = 1.0.0 =
-* Initial release, as Jev Guard (GitHub only).
-* Checks comments, WooCommerce reviews, pingbacks and Contact Form 7 submissions.
+* Initial release on WordPress.org.
+* Checks comments, WooCommerce reviews, pingbacks and Contact Form 7 submissions with Jev, TypeSafe AI's decision model.
 * Providers: TypeSafe AI, Vercel AI Gateway, OpenRouter and custom endpoints.
 * Three-tier decision (spam / hold / allow) with hold rules for borderline, on-topic-but-spammy and abusive comments.
 * Retry queue re-checks comments the service could not classify within 20 minutes.
-* "Page context" setting (Title only / Standard / Extended) controls how much of the page is sent; `jev_guard_post_context` filter.
-* The text of password-protected, private and unpublished pages is never sent.
-* A request the provider rejects as too large is retried once without the page text.
-* Calibration tool, statistics, and a "Jev" column in the comments list with decision, category and hold reason.
+* "Page context" setting (Title only / Standard / Extended) controls how much of the page is sent; `spamlens_post_context` filter. The text of password-protected, private and unpublished pages is never sent.
+* Settings screen with Overview, Settings and Calibration tabs; Test connection; pin a model version after calibrating.
+* SpamLens column in the comments list, Re-check with SpamLens, Check for Spam on the Pending queue, and a details box on each comment.
+* Replaces Jev Guard, the GitHub-only preview: activating SpamLens switches Jev Guard off and brings over its settings, statistics, comment scores and re-check queue.
 
 == Upgrade Notice ==
-
-= 1.1.0 =
-Jev Guard is now SpamLens, with a new settings screen. Custom integrations must implement SpamLens\Service\Integrations\Integration.
 
 = 1.0.0 =
 Initial release.
