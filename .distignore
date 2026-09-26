@@ -1,6 +1,6 @@
 # Excluded from the distributable zip (rsync --exclude-from in .github/workflows and bin/build-zip.sh).
 # Everything else ships: spamlens.php, uninstall.php, readme.txt, LICENSE, src/, views/, public/ (built assets),
-# resources/ (the TypeScript and SCSS sources of public/, plus resources/assets used at runtime), languages/,
+# resources/assets (logos used at runtime), resources/languages,
 # packages/ (the autoloader WP Scoper writes on composer install).
 /.git
 /.github
@@ -37,6 +37,11 @@
 /vitest.config.ts
 /vitest.config.mjs
 /README.md
+# The TypeScript and SCSS sources of public/. WordPress.org accepts built code when its source is public; readme.txt
+# ("Source code") links the GitHub repository, which has these folders and the build setup.
+/resources/react
+/resources/entries
+/resources/scss
 /CHANGELOG.md
 /CONTRIBUTING.md
 /SECURITY.md

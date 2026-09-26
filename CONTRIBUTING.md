@@ -14,7 +14,7 @@ npm start          # WordPress + Contact Form 7 at http://localhost:8888 (needs 
 
 - `npm run test:php` (PHPUnit inside wp-env) and `composer phpcs` must pass. CI runs the same checks on PHP 7.4–8.5.
 - Code follows the WordPress Coding Standards as configured in `phpcs.xml.dist`; `composer phpcbf` fixes most formatting.
-- If you change user-facing strings, regenerate `languages/spamlens.pot`: `wp i18n make-pot . languages/spamlens.pot --exclude=tests,bin,vendor,node_modules`.
+- If you change user-facing strings, regenerate `resources/languages/spamlens.pot` with `npm run build:pot`.
 - Add a line under "Unreleased" in both `CHANGELOG.md` and the changelog section of `readme.txt`.
 
 ## Notes
