@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 if ( ! defined( 'SPAMLENS_VERSION' ) ) {
-	define( 'SPAMLENS_VERSION', '1.0.0' );
+	define( 'SPAMLENS_VERSION', '1.0.1' );
 }
 
 if ( ! defined( 'SPAMLENS_FILE' ) ) {

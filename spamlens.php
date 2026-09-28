@@ -3,9 +3,8 @@
  * Plugin Name:       SpamLens
  * Plugin URI:        https://github.com/veronalabs/spamlens
  * Description:       Spam protection for comments, reviews and Contact Form 7 powered by Jev, TypeSafe AI's decision model.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.4
- * Tested up to:      7.1
  * Requires PHP:      7.4
  * Author:            VeronaLabs
  * Author URI:        https://veronalabs.com/
