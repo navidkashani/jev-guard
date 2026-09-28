@@ -4,7 +4,7 @@ Tags: spam, comments, antispam, contact form 7, ai
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,9 +56,9 @@ This plugin sends data to a third-party service to classify submissions. Nothing
 
 **Services** (one of them, as selected in the settings):
 
-* TypeSafe AI — https://typesafe.ai — Terms: https://typesafe.ai/terms — Privacy: https://typesafe.ai/privacy
-* Vercel AI Gateway — https://vercel.com/ai-gateway — Terms: https://vercel.com/legal/terms — Privacy: https://vercel.com/legal/privacy-policy
-* OpenRouter — https://openrouter.ai — Terms: https://openrouter.ai/terms — Privacy: https://openrouter.ai/privacy
+* TypeSafe AI — https://typesafe.ai — endpoint `https://api.typesafe.ai/v1/systemone` — Terms: https://typesafe.ai/terms — Privacy: https://typesafe.ai/privacy
+* Vercel AI Gateway — https://vercel.com/ai-gateway — endpoint `https://ai-gateway.vercel.sh/typesafe/v1/systemone` — Terms: https://vercel.com/legal/terms — Privacy: https://vercel.com/legal/privacy-policy
+* OpenRouter — https://openrouter.ai — endpoint `https://openrouter.ai/api/alpha/decisions` — Terms: https://openrouter.ai/terms — Privacy: https://openrouter.ai/privacy
 * A custom endpoint you configure yourself is governed by that provider's terms.
 
 The response contains probabilities only. The plugin stores those probabilities, the category and the model version as comment meta; it does not store any additional personal data from the check.
@@ -118,6 +118,10 @@ Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other
 
 == Changelog ==
 
+= 1.0.1 =
+* "Tested up to" is declared in readme.txt only.
+* External services section names the endpoint each provider is called on.
+
 = 1.0.0 =
 * Initial release on WordPress.org.
 * Checks comments, WooCommerce reviews, pingbacks and Contact Form 7 submissions with Jev, TypeSafe AI's decision model.
@@ -130,6 +134,9 @@ Comments (including WooCommerce reviews and pingbacks) and Contact Form 7. Other
 * Replaces Jev Guard, the GitHub-only preview: activating SpamLens switches Jev Guard off and brings over its settings, statistics, comment scores and re-check queue.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Readme and plugin header fixes from the WordPress.org review.
 
 = 1.0.0 =
 Initial release.
